@@ -1,0 +1,51 @@
+
+<script src="js/facebook-sdk.js"></script>
+
+<!-- The left page navigation bar-->
+<aside>
+    <!-- Next event info-->
+    <div class="next-event text-center">
+        Next Screening
+
+        <figure>
+            <img src="images/Her%20Poster.jpg">
+            <figcaption>"Her"</figcaption>
+        </figure>
+        <div>
+            27th February<br/>
+            16:00 in AUD 1
+        </div>
+    </div>
+
+    <!-- Embedded facebook page, however, could not find the same version i used in the photoshop design demo as they have updated their API.-->
+    <div>
+        <div class="facebook-embed" data-href="https://www.facebook.com/itu.film" data-hide-cover="true" data-show-facepile="false" data-show-posts="false"></div>
+    </div>
+
+    <!-- Using a simple poll and survey service from pollcode.com to showcase poll functionality -->
+    <div class="poll">
+        <form method="post" action="http://poll.pollcode.com/58598945">
+            <p><strong>Which movie should ITU.film screen next?</strong></p>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="1" id="answer585989451"/>
+            <label for="answer585989451"> Kingsman: The Secret Service</label>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="2" id="answer585989452"/>
+            <label for="answer585989452">Big Eyes</label>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="3" id="answer585989453"/>
+            <label for="answer585989453" style="float:left;width:150px;">Fifty Shades of Grey</label>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="4" id="answer585989454"/>
+            <label for="answer585989454">Mænd og Høns</label>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="5" id="answer585989455"/>
+            <label for="answer585989455">Chappie</label>
+            <div class="blank"></div>
+            <input type="radio" name="answer" value="6" id="answer585989456"/>
+            <label for="answer585989456">None of the above</label>
+            <div class="blank"></div>
+            <div class="buttons"><input type="submit" value=" Vote "><input type="submit" name="view" value=" View "></div>
+        </form>
+    </div>
+</aside>
