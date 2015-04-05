@@ -1,7 +1,3 @@
-* {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 #page {
     min-height:100%;
     padding-bottom: 25px;
@@ -15,7 +11,7 @@ header {
 #sidebar, #content {
     background-color: #ebebeb;
     height: 100%;
-    
+
 }
 
 footer {
