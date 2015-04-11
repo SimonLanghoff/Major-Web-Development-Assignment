@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Major Web Assignment Part 2 - Simon Langhoff</title>
+    <link href="css/movies.css" type="text/css" rel="stylesheet">
+    <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/dynamicLoad.js"></script>
+    <script src="js/facebook-sdk.js"></script>
+
+
+</head>
+<body>
+    <div id="recommendations-page" class="container_12">
+        <!-- Dynamically loaded header -->
+        <div id="header_960"></div>
+
+        <div class="wrapper">
+            <!-- Dynamically load sidebar here.-->
+            <div id="sidebar_960" class="grid_3" ></div>
+
+            <div class="separator"> </div>
+
+            <div id="content" class="grid_9">
+                <h1>ITU.film's Movie Database</h1>
+
+                <div class="search-box">
+                    <input type="text">
+                    <!--<img src="images/SearchBarNew.png">-->
+                </div>
+
+                <div class="recommendations">
+                    <div class="user-comments">
+                        <h2> Latest Recommendations </h2>
+                        <article class="comment row-even">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
+                                <span class="date">23 feb. 2015</span>
+                                <p>
+                                    'The Terminator' is not a perfect picture. The movie lags in some parts,
+                                    and the romance element is fairly contrived. Despite all that the movie brims with
+                                    energy and promise, a script that mostly delivers, characters you can enjoy,
+                                    and the ultimate Arnie role.
+                                    <br>
+                                    Well worth catching. 8/10.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="comment">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
+                                <span class="date">20 feb. 2015</span>
+                                <p>
+                                    'Her' is a complex film with a much deeper meaning that lies beneath the surface.
+                                    A beautifully crafted motion picture, this quirky love story is sure to resonate with
+                                    you once you've seen it. It is an extremely interesting (and realistic) look at the future
+                                    - Jonze's quaint and poignant film is a must-see! 9/10
+                                </p>
+                            </div>
+                        </article>
+                        <article class="comment row-even">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Billy Joel recommended <a href="#">The Room</a></h4>
+                                <span class="date">19 feb. 2015</span>
+                                <p>
+                                    This film is completely worth seeing.
+                                    A friend of mine recently said it was as if a deer made a movie about human interaction,
+                                    unable to comprehend what it is to be a human being. It is hilarious.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <a href="#">More recommendations...</a>
+                </div>
+
+
+                <div class="list-wrapper container_9">
+                    <div class="movie-list">
+                        <h2>Latest Movies</h2>
+                        <ul class="no-margin">
+                            <li>
+                                <a href="#">Her</a>
+                            </li>
+                            <li>
+                                <a href="#">The Perks of Being a Wallflower</a>
+                            </li>
+                            <li>
+                                <a href="#">Searching for Sugar Man</a>
+                            </li>
+                            <li>
+                                <a href="#">Twin Peaks</a>
+                            </li>
+                            <li>
+                                <a href="#">Terminator</a>
+                            </li>
+                            <li>
+                                <a href="#">The Room</a>
+                            </li>
+                        </ul>
+                    <a href="#">More Movies...</a>
+                    </div>
+                    <div class="event-wrapper">
+                        <div class="event-list">
+                            <h2>Screening Events</h2>
+                            <ul class="no-margin">
+                                <li>
+                                    <a href="#">Game of Thrones Premiere</a>
+                                </li>
+                                <li>
+                                    <a href="#">Her</a>
+                                </li>
+                                <li>
+                                    <a href="#">The Perks of Being a Wallflower</a>
+                                </li>
+                                <li>
+                                    <a href="#">Searching for Sugar Man</a>
+                                </li>
+                                <li>
+                                    <a href="#">Twin Peaks Season 2 Episode 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Twin Peaks Season 2 Episode Start</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="event-dates">
+                            <ul class="no-margin">
+                                <li>
+                                    4th Mar
+                                </li>
+                                <li>
+                                    27th Feb
+                                </li>
+                                <li>
+                                    13th Feb
+                                </li>
+                                <li>
+                                    6th Feb
+                                </li>
+                                <li>
+                                    30th Oct
+                                </li>
+                                <li>
+                                    23rd Oct
+                                </li>
+                            </ul>
+                        </div>
+                    <a href="#">More Events...</a>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO: Move footer out into page div and fix layout size-->
+            <footer class="text-center">
+                Copyright &copy; ITU.film 2015
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
