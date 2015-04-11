@@ -9,10 +9,10 @@ $(function(){
 });
 
 $(function(){
-    $("#sidebar_960").load("sidebar_960.html");
+    $("#sidebar_960").load("sidebar.html");
 });
 
 // Load the header
 $(function(){
-    $("#header_960").load("header_960.html");
+    $("#header_960").load("header.html");
 });

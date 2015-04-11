@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Major Web Assignment Part 2 - Simon Langhoff</title>
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
+    <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/dynamicLoad.js"></script>
     <script src="js/facebook-sdk.js"></script>
@@ -13,17 +12,17 @@
 
 </head>
 <body>
-    <div id="home-page" class="col-md-12">
+    <div id="home-page" class="container_12">
         <!-- Dynamically loaded header -->
         <div id="header"></div>
 
         <div class="wrapper">
             <!-- Dynamically load sidebar here.-->
-            <div id="sidebar" class="col-md-3" ></div>
+            <div id="sidebar" class="grid_3" ></div>
 
             <div class="separator"> </div>
 
-            <div id="content" class="col-md-9">
+            <div id="content" class="grid_9">
                 <div class="news-item-main">
                     <article>
                         <img src="images/Event%20Poster%20Her.jpg" width="600">
@@ -41,15 +40,20 @@
                 </div>
                 <div class="news-item">
                     <article>
-                        <h2>
-                            Announcing introductory speaker this Friday
-                        </h2>
+                        <div class="article-headline-container">
+                            <h2 class=" article-headline">
+                                Announcing introductory speaker this Friday
+                            </h2>
+                            <h4 class="text-left no-margin"> Written by ITU.film </h4>
+                            <h4 class="text-right no-margin"> 25. feb. 2015 </h4>
+                        </div>
                         <div class="news-item-images">
                             <figure>
                                 <img src="images/AI.jpeg">
                             </figure>
+                            <!-- I decided to only include facebook integration since that is the only social site that ITU.film uses right now anyways.-->
                             <figure>
-                                <img src="images/ShareIcons.png">
+                                <div class="fb-like" data-href="https://www.facebook.com/itu.film" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
                             </figure>
                         </div>
                         <p>
@@ -65,16 +69,21 @@
                 </div>
                 <div class="news-item">
                     <article>
-                        <h2>The Perks of being a Wallflower screening</h2>
+
+                        <div class="article-headline-container">
+                            <h2 class="article-headline">
+                                The Perks of being a Wallflower screening
+                            </h2>
+                            <h4 class="text-left no-margin"> Written by ITU.film </h4>
+                            <h4 class="text-right no-margin"> 9. feb. 2015 </h4>
+                        </div>
                         <div class="news-item-images">
                             <figure>
                                 <img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg">
                             </figure>
                             <figure>
                                 <!-- Facebook Share Button -->
-                                <div class="fb-share-button" data-href="http://localhost:63343/static/index.html/articles/ai-this-friday" data-layout="icon"></div>
-
-                                <img src="images/ShareIcons.png">
+                                <div class="fb-like" data-href="https://www.facebook.com/itu.film" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
                             </figure>
                         </div>
                         <p>

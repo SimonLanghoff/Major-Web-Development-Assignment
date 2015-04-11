@@ -1,51 +1,36 @@
-#home-page {
-    width: 1000px;
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0px;
 }
+
+p {
+    margin: 0 0 10px;
+}
+
+/************************************/
+/*********** Header *****************/
+/************************************/
 
 header {
     background: linear-gradient(to bottom, #b5bdc8 0%,#828c95 36%,#28343b 100%);
     height: 100px;
-    width: calc(100% + 30px);
-}
-
-.wrapper {
-    background-color: #ebebeb;
     width: 100%;
-    position: absolute;
-
-    /* Make sure the wrapper extends across aside and main content */
-    overflow: hidden;
-}
-
-.separator {
-    position: absolute;
-    height: calc(100% - 75px);
-    display: inline-block;
-    margin-top: 25px;
-    border-right: 1px dashed #000000;
-}
-
-footer {
-    width: 100%;
-    clear: both;
-    height: 25px;
-    background-color: #707070;
 }
 
 .top-nav-section {
     height: 100%;
-    padding-top: 50px;
 }
 
 .top-nav-section > nav > ul {
     list-style: none;
     padding-left: 0;
+    padding-top: 46px;
 }
 
 .top-nav-section > nav > ul > li {
-     /*float: left; */
     display: inline-block;
-    padding: 15px 0px 0px 15px;
+/* padding: 15px 0px 0px 15px; */
+    padding-left: 15px;
     margin-right: 100px;
     font-size: 20px;
     text-transform: capitalize;
@@ -53,12 +38,12 @@ footer {
 }
 
 .top-nav-section > nav > ul > li a {
+    text-decoration: none;
     color: #cccccc;
 }
 
 .top-nav-section > nav > ul > li a:hover {
     color: #ce2127;
-    text-decoration:  none;
 }
 
 .banner-logo-container {
@@ -69,9 +54,30 @@ footer {
     line-height: 100px;
 }
 
+.banner-logo-container > figure {
+    margin: 0px;
+}
+
 .banner-logo-container > figure > img {
     vertical-align: middle;
 }
+
+/************* Main Content ********/
+
+.wrapper {
+    background-color: #ebebeb;
+    width: 100%;
+    height: 100%;
+    /* Make sure the wrapper extends across aside and main content */
+    overflow: hidden;
+    /* Needed to ensure correct calculation of height by children. */
+    position: relative;
+}
+
+
+/************************************/
+/************* Sidebar **************/
+/************************************/
 
 .next-event {
     padding-top: 10px;
@@ -79,12 +85,22 @@ footer {
 }
 
 .next-event > p {
-    font-size: larger;
+    font-size: large;
+}
+
+.next-event > h4 {
+    margin: 15px 0px 10px 0px;
+    font-size: x-large;
+    font-weight: normal;
 }
 
 .next-event > figure > figcaption {
     font-weight: bold;
     font-size: larger;
+}
+
+figure.no-margin > img {
+    width: 65%;
 }
 
 .facebook-embed {
@@ -135,6 +151,50 @@ footer {
     height:3px;
 }
 
+/* Separates the sidebar from the main content on the right with a dashed line */
+.separator {
+    position: absolute;
+    height: calc(100% - 75px); /* Fill the whole screen and subtract padding */
+    display: inline-block;
+    margin-top: 25px;
+    border-right: 1px dashed #000000;
+}
+
+/************************************/
+/*********** Home Page **************/
+/************************************/
+
+#home-page {
+    width: 1000px;
+}
+
+#content article {
+    display: inline-block;
+}
+
+.article-headline-container {
+    width: 70%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.article-headline-container * {
+    display: inline-block;
+}
+
+.article-headline {
+    font-weight: bolder;
+    font-size: x-large;
+    width: 100%;
+    margin: 0px;
+    display: inline-block;
+    /* clear: both; */
+}
+
+.article-headline-container > h4 {
+    width: calc(50% - 5px);
+}
+
 .news-item-main {
     float: left;
     clear: right;
@@ -167,33 +227,26 @@ footer {
 .news-item > article > h2 {
     width: 100%;
     font-weight: bold;
-
     margin-top: 0px;
 
 }
-.news-item > article > figure {
-    margin: 0px 0px 10px 10px;
+.news-item > article > div > figure {
+    margin: 0px;
     clear: right;
 }
 
 .news-item > article > p {
-    width: 60%;
+    width: 70%;
     margin-top: 0px;
-    padding-right: 10px;
-     float: left;
-}
-
-/* Horizontal Separator Line between news items.*/
-#home-page hr {
-    width:90%;
-    height: 1px !important;
-    background: #000000;
-    margin: 0px auto 0px auto;
+    float: left;
+    font-size: smaller;
 }
 
 .news-item-images {
     float: right;
-    width: 40%;
+    width: calc(30% - 10px);
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 .news-item-images > figure > img {
@@ -206,6 +259,275 @@ footer {
     height: auto;
     width: 100%;
 }
+
+/* Horizontal Separator Line between news items.*/
+#home-page hr {
+    width:90%;
+    height: 1px !important;
+    background: #000000;
+    margin: 20px auto 20px auto;
+}
+
+
+/************************************/
+/*********** Movie Page *************/
+/************************************/
+
+.movie-info-container {
+    display: inline-block;
+    width: 100%;
+    margin: 15px 0px 10px 0px;
+}
+
+.movie-info > h1 {
+    margin: 10px 0px 0px 0px;
+}
+
+
+.movie-info-container > img {
+    display: inline-block;
+    width: calc(20% - 10px);
+    margin: 0px 10px 10px 0px;
+}
+
+.movie-info {
+    display: inline-block;
+    width: calc(80% - 10px);
+    vertical-align: top;
+}
+
+.rating {
+    display: inline-block;
+    float: right;
+    text-align: center;
+
+}
+
+.movie-info-list > ul > li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    margin: 0px 0px 0px 0px;
+}
+
+.movie-info-list > ul {
+    padding: 0px;
+}
+
+.similar-movies > .image-grid {
+    vertical-align: top;
+    display: inline-block;
+    width: 40%;
+}
+
+.similar-movies > .selected-movie {
+    vertical-align: bottom;
+    display: inline-block;
+    width: calc(60% - 10px);
+    height: 100%;
+}
+
+.selected-movie > img {
+    width: 50%;
+}
+
+.selected-movie > .info-container {
+    margin-left: 5px;
+    display: inline-block;
+    width: calc(50% - 10px);
+    vertical-align: top;
+}
+
+.image-grid > img {
+    margin: 5px 5px;
+}
+
+.image-grid > h2 {
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+}
+
+.info-container > h2 {
+    font-weight: normal;
+    margin: 15px 0px 5px 0px;
+}
+
+/************************************/
+/************* Comments *************/
+/************************************/
+
+.user-comments * {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.user-comments > h2 {
+    margin-bottom: 5px;
+}
+
+.comment {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0px;
+}
+
+.comment-picture {
+    width: 20%;
+    margin: 0px 5px;
+}
+
+.comment-picture > img {
+    width: 100%;
+    height: auto;
+}
+
+.comment-text {
+    width: calc(80% - 20px);
+}
+
+.comment-text > h4 {
+    height: 20px;
+    margin: 0px 0px 10px 0px;
+    width: 80%;
+}
+
+.date {
+    height: 20px;
+    width: calc(20% - 5px);
+    margin: 0px 0px 10px 0px;
+}
+
+.comment-text > p {
+    vertical-align: top;
+    width: 100%;
+}
+
+.row-even {
+    background-color: #d7d7d7;
+}
+
+/************************************/
+/********* Recommendations **********/
+/************************************/
+
+/* Search */
+.search-box {
+    background: url(../images/SearchBarNew.png) no-repeat;
+    width: 478px;
+    height: 53px
+}
+
+.search-box > input {
+    font-size: larger;
+    height: 100%;
+    line-height: 100%; /* Centers Text */
+    border:none;
+    background:transparent;
+    padding:0px 100px 0px 50px; /* Limit input to within search box boundaries */
+    text-align: left;
+    width: calc(100% - 150px); /* Width of image - padding left and right*/
+}
+
+.recommendations > a {
+    padding-top: 5px;
+    float: right;
+    clear: both;
+}
+
+.list-wrapper {
+    height: 100%;
+    margin: 2em 0em;
+}
+
+.list-wrapper h2 {
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+}
+
+.movie-list {
+    display: inline-block;
+    width: calc(40% - 5px);
+    vertical-align: top;
+}
+
+/* Float bottom links to the right */
+.list-wrapper > div > a {
+    float: right;
+    margin-top: 0.5em;
+}
+
+.event-wrapper {
+    display: inline-block;
+    width: 60%;
+}
+
+.event-list {
+    width: calc(80% - 5px);
+    display: inline-block;
+}
+
+.list-wrapper ul {
+    padding-left: 0px;
+}
+
+.list-wrapper li {
+    /* Add small spaing between each list item and remove the dot */
+    margin-top: 5px;
+    list-style: none;
+}
+
+.event-dates {
+    width: 20%;
+    display: inline-block;
+}
+
+.event-dates li {
+    color: #cc0000;
+}
+
+.event-dates li:nth-child(1), .event-dates li:nth-child(2) {
+    color: #00cc00;
+}
+
+
+
+/************************************/
+/************* Footer ***************/
+/************************************/
+
+footer {
+    width: 100%;
+    clear: both;
+    height: 25px;
+    background-color: #707070;
+}
+
+/************************************/
+/*************** Misc ***************/
+/************************************/
+
+.text-center {
+    text-align: center;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+/* Give all links part of the main content the same type of color*/
+#content a {
+    color: #48484d;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
 
 /* Scale Image */
 /* Image container width = 100 */
