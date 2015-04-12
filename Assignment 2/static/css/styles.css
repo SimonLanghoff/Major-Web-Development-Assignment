@@ -324,18 +324,18 @@ figure.no-margin > img {
     width: 40%;
 }
 
-.similar-movies > .selected-movie {
+.similar-movies > .similar-movie-expanded {
     vertical-align: bottom;
     display: inline-block;
     width: calc(60% - 10px);
     height: 100%;
 }
 
-.selected-movie > img {
+.similar-movie-expanded > img {
     width: 50%;
 }
 
-.selected-movie > .info-container {
+.similar-movie-expanded > .info-container {
     margin-left: 5px;
     display: inline-block;
     width: calc(50% - 10px);
@@ -536,6 +536,10 @@ footer > p {
 
 .align-bottom {
     vertical-align: bottom;
+}
+
+.hidden {
+    display: none!important;
 }
 
 
