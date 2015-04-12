@@ -5,11 +5,10 @@
 
     <title>Major Web Assignment Part 2 - Simon Langhoff</title>
     <!--TODO: 480 pixel width or something-->
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-
-    <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <!--<link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="all">-->
 
 
     <script src="js/jquery-1.11.2.min.js"></script>
@@ -26,13 +25,13 @@
 
         <div class="wrapper">
             <!-- Dynamically load sidebar here.-->
-            <div id="sidebar" class="grid_3" ></div>
+            <div id="sidebar" ></div>
 
             <div class="separator"> </div>
 
             <div id="content" class="grid_9">
                 <div class="movie-info-container">
-                    <img src="images/TwinPeaksWallPoster.jpg" alt="Poster for the Twin Peaks Series">
+                    <img src="images/PosterTwinPeaks.jpg" alt="Poster for the Twin Peaks Series">
 
                     <div class="movie-info">
 
@@ -70,32 +69,86 @@
                     <hr>
                 </div>
                 <!-- Similar Movies-->
-                <div class="similar-movies">
+                <!-- Make collapsible-->
+                <button type="button" class="toggle-button" data-toggle="collapse" data-target="#collapse-similar-movies">+</button>
+
+                <div id="collapse-similar-movies" class="similar-movies collapse in">
                     <div class="image-grid no-margin">
                         <h2>Similar Movies</h2>
-                        <img src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
                         <img src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
-                        <img src="images/Movies/Lost%20Highway.jpg" alt="Movie Poster for Lost Highway">
-                        <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie Poster for Mulholland Drive">
-                        <img src="images/Movies/The%20Xfiles.jpg" alt="Movie Poster for The X files">
                         <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
+                        <img src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
+                        <img src="images/Movies/The%20Xfiles.jpg" alt="Movie Poster for The X files">
+                        <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie Poster for Mulholland Drive">
+                        <img src="images/Movies/Lost%20Highway.jpg" alt="Movie Poster for Lost Highway">
                     </div>
-                    <div class="selected-movie no-margin">
+                    <!-- A section for each similar movie is requested but only one is visible at a time -->
+                    <div class="similar-movie-expanded movie-1 no-margin">
                         <img src="images/Movies/blue%20velvet%20high.jpg" alt="A higher resolution movie poster for Blue Velvet">
                         <div class="info-container">
-                            <h2> Blue Velvet </h2>
+                            <h2>Blue Velvet</h2>
+                            <p><strong>Crime, Drama, Mystery</strong></p>
+                            <p>
+                                The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="similar-movie-expanded movie-2 no-margin hidden">
+                        <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie poster for Twin Peaks">
+                        <div class="info-container">
+                            <h2>Twin Peaks: Fire Walk With Me</h2>
+                            <p><strong>Thriller, Mystery</strong></p>
+                            <p>
+                                A young FBI agent disappears while investigating a murder miles from Twin Peaks that may be related to the future murder of Laura Palmer; the last week of the life of Laura Palmer is chronicled.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="similar-movie-expanded movie-3 no-margin hidden">
+                        <img src="images/Movies/Eraser%20Head.jpg" alt="Movie poster for Eraserhead">
+                        <div class="info-container">
+                            <h2>Eraserhead</h2>
+                            <p><strong>Drama, Horror, Mystery</strong></p>
+                            <p>
+                                Henry Spencer tries to survive his industrial environment, his angry girlfriend, and the unbearable screams of his newly born mutant child.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="similar-movie-expanded movie-5 no-margin hidden">
+                        <img src="images/Movies/The%20Xfiles.jpg" alt="Movie poster for The X-files">
+                        <div class="info-container">
+                            <h2>The X-files</h2>
+                            <p><strong>Drama, Mystery</strong></p>
+                            <p>
+                                Two FBI agents, Fox Mulder the believer and Dana Scully the skeptic, investigate the strange and unexplained while hidden forces work to impede their efforts.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="similar-movie-expanded movie-4 no-margin hidden">
+                        <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie poster for Mulholland Drive">
+                        <div class="info-container">
+                            <h2>Mulholland Drive</h2>
                             <p><strong>Drama, Thriller, Mystery</strong></p>
                             <p>
-                                After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky
-                                Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture
-                                beyond dreams and reality.
+                                After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="similar-movie-expanded movie-6 no-margin hidden">
+                        <img src="images/Movies/Lost%20Highway.jpg" alt="Movie poster for Lost Highway">
+                        <div class="info-container">
+                            <h2>Lost Highway</h2>
+                            <p><strong>Drama, Mystery, Thriller</strong></p>
+                            <p>
+                                After a bizarre encounter at a party, a jazz saxophonist is framed for the murder of his wife and sent to prison, where he inexplicably morphs into a young mechanic and begins leading a new life.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="user-comments" data-toggle="collapse" data-target="#collapse-comments">
+                <div class="user-comments">
                     <h2>Comments</h2>
-                    <div id="collapse-comments">
+                    <!-- Using Bootstrap to collapse content. Somehow it does not work correctly though-->
+                    <button type="button" class="toggle-button" data-toggle="collapse" data-target="#collapse-comments">+</button>
+                    <div id="collapse-comments" class="collapse in">
                         <article class="comment row-even">
                             <div class="comment-picture">
                                 <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">

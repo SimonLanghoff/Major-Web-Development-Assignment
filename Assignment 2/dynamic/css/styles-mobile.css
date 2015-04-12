@@ -369,18 +369,18 @@ figure.no-margin > img {
     width: 40%;
 }
 
-.similar-movies > .selected-movie {
+.similar-movies > .similar-movie-expanded {
     vertical-align: bottom;
     display: inline-block;
     width: calc(60% - 10px);
     height: 100%;
 }
 
-.selected-movie > img {
+.similar-movie-expanded > img {
     width: 50%;
 }
 
-.selected-movie > .info-container {
+.similar-movie-expanded > .info-container {
     margin-left: 5px;
     display: inline-block;
     width: calc(50% - 10px);
@@ -406,12 +406,18 @@ figure.no-margin > img {
 /************************************/
 
 .user-comments * {
-    vertical-align: top;
     display: inline-block;
 }
 
 .user-comments > h2 {
+    /* Make room for collapsible button*/
+    width: calc(100% - 30px);
     margin-bottom: 5px;
+}
+
+.comment * {
+    /* Align all comment elements to look more compressed.*/
+    vertical-align: top;
 }
 
 .comment {
