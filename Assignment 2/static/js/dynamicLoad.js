@@ -8,11 +8,7 @@ $(function(){
     $("#header").load("header.html");
 });
 
-$(function(){
-    $("#sidebar_960").load("sidebar.html");
-});
-
 // Load the header
 $(function(){
-    $("#header_960").load("header.html");
+    $("#footer").load("footer.html");
 });
