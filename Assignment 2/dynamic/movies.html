@@ -22,7 +22,7 @@
 <body>
     <div id="movie-page" class="container_12">
         <!-- Dynamically loaded header -->
-        <div id="header_dynamic"></div>
+        <div id="header"></div>
 
         <div class="wrapper">
             <!-- Dynamically load sidebar here.-->
@@ -32,7 +32,7 @@
 
             <div id="content" class="grid_9">
                 <div class="movie-info-container">
-                    <img src="images/TwinPeaksWallPoster.jpg">
+                    <img src="images/TwinPeaksWallPoster.jpg" alt="Poster for the Twin Peaks Series">
 
                     <div class="movie-info">
 
@@ -40,7 +40,7 @@
                         <hr class="no-margin">
 
                         <div class="rating">
-                            <img src="images/RatingStar.png">
+                            <img src="images/RatingStar.png" alt="A star-shaped polygon with the rating of the movie inside">
                             <br>
                             <a href="#">4 Recommendations</a>
                         </div>
@@ -73,15 +73,15 @@
                 <div class="similar-movies">
                     <div class="image-grid no-margin">
                         <h2>Similar Movies</h2>
-                        <img src="images/Movies/Eraser%20Head.jpg">
-                        <img src="images/Movies/Blue%20Velvet%20Poster.jpg">
-                        <img src="images/Movies/Lost%20Highway.jpg">
-                        <img src="images/Movies/Mulholland%20Drive.jpg">
-                        <img src="images/Movies/The%20Xfiles.jpg">
-                        <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg">
+                        <img src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
+                        <img src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
+                        <img src="images/Movies/Lost%20Highway.jpg" alt="Movie Poster for Lost Highway">
+                        <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie Poster for Mulholland Drive">
+                        <img src="images/Movies/The%20Xfiles.jpg" alt="Movie Poster for The X files">
+                        <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
                     </div>
                     <div class="selected-movie no-margin">
-                        <img src="images/Movies/blue%20velvet%20high.jpg">
+                        <img src="images/Movies/blue%20velvet%20high.jpg" alt="A higher resolution movie poster for Blue Velvet">
                         <div class="info-container">
                             <h2> Blue Velvet </h2>
                             <p><strong>Drama, Thriller, Mystery</strong></p>
@@ -93,32 +93,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="user-comments">
+                <div class="user-comments" data-toggle="collapse" data-target="#collapse-comments">
                     <h2>Comments</h2>
-                    <article class="comment row-even">
-                        <div class="comment-picture">
-                            <img src="images/profile_dummy.jpg">
-                        </div>
-                        <div class="comment-text">
-                            <h4>Written by Simon Langhoff</h4>
-                            <span class="date">19 feb. 2015</span>
-                            <p>
-                                I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever
-                            </p>
-                        </div>
-                    </article>
-                    <article class="comment">
-                        <div class="comment-picture">
-                            <img src="images/profile_dummy.jpg">
-                        </div>
-                        <div class="comment-text">
-                            <h4>Written by Billy</h4>
-                            <span class="date">19 feb. 2015</span>
-                            <p>
-                                Kyle MacLachlan <3
-                            </p>
-                        </div>
-                    </article>
+                    <div id="collapse-comments">
+                        <article class="comment row-even">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Written by Simon Langhoff</h4>
+                                <span class="date">19 feb. 2015</span>
+                                <p>
+                                    I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever
+                                </p>
+                            </div>
+                        </article>
+                        <article class="comment">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Written by Billy</h4>
+                                <span class="date">19 feb. 2015</span>
+                                <p>
+                                    Kyle MacLachlan &lt;3
+                                </p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>

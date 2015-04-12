@@ -5,7 +5,6 @@
     <title>Major Web Assignment Part 2 Static - Simon Langhoff</title>
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
-    <script src="js/dynamicLoad.js"></script>
 
     <!-- Scripts necessary for facebook embeds-->
     <script src="js/jquery-1.11.2.min.js"></script>
@@ -14,13 +13,71 @@
 </head>
 <body>
     <div id="recommendations-page" class="container_12">
-        <!-- Dynamically loaded header -->
-        <div id="header"></div>
+        <!-- Header -->
+        <header>
+            <!--Contains the logo and the navigation links-->
+            <div class="banner-logo-container grid_3">
+                <!--Banner Logo is contained here as a background image.-->
+            </div>
+            <div class="top-nav-section grid_9">
+                <nav>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./movies.html">Movies</a></li>
+                        <li><a href="./about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
         <div class="wrapper">
-            <!-- Dynamically load sidebar here.-->
-            <div id="sidebar" class="grid_3" ></div>
 
+            <!-- Sidebar.-->
+            <aside class="grid_3">
+                <!-- Next event info-->
+                <div class="next-event text-center">
+                    <h4>
+                        Next Screening
+                    </h4>
+                    <figure class="no-margin">
+                        <img src="images/Her%20Poster.jpg">
+                        <figcaption>"Her"</figcaption>
+                    </figure>
+                    <p>
+                        27th February<br/>
+                        16:00 in AUD 1
+                    </p>
+                </div>
+
+                <!-- Using a simple poll and survey service from pollcode.com to showcase poll functionality -->
+                <div class="poll">
+                    <form method="post" action="http://poll.pollcode.com/58598945">
+                        <p><strong>Which movie should ITU.film screen next?</strong></p>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="1" id="answer585989451"/>
+                        <label for="answer585989451"> Kingsman: The Secret Service</label>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="2" id="answer585989452"/>
+                        <label for="answer585989452">Big Eyes</label>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="3" id="answer585989453"/>
+                        <label for="answer585989453">Fifty Shades of Grey</label>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="4" id="answer585989454"/>
+                        <label for="answer585989454">Mænd og Høns</label>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="5" id="answer585989455"/>
+                        <label for="answer585989455">Chappie</label>
+                        <div class="blank"></div>
+                        <input type="radio" name="answer" value="6" id="answer585989456"/>
+                        <label for="answer585989456">None of the above</label>
+                        <div class="blank"></div>
+                        <div class="buttons"><input type="submit" value=" Vote "><input type="submit" name="view" value=" View "></div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- Separate the sidebar and the main content with a dashed line -->
             <div class="separator"> </div>
 
             <div id="content" class="grid_9">
@@ -161,8 +218,12 @@
             </div>
         </div>
 
-        <!-- Dynamically load footer-->
-        <div id="footer"></div>
+        <!-- Footer -->
+        <footer class="text-center">
+            <p>
+                Copyright &copy; ITU.film 2015
+            </p>
+        </footer>
     </div>
 </body>
 </html>
