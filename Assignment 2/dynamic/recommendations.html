@@ -3,9 +3,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Major Web Assignment Part 2 - Simon Langhoff</title>
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <!--TODO: 480 pixel width or something-->
     <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
-    <script src="js/jquery-1.11.2.min.js"></script>
+
+
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="screen and (max-width: 960px)">
+
+    <!--I need to include bootstrap last in order to avoid bugs in collapsible menus. However, it also means I need to add extra markup in CSS to override some bootstrap rules -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+
+    <!-- include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- include bootstrap javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <script src="js/dynamicLoad.js"></script>
     <script src="js/facebook-sdk.js"></script>
 
@@ -25,9 +38,38 @@
             <div id="content" class="grid_9">
                 <h1>ITU.film's Movie Database</h1>
 
+                <!-- Image loaded in css -->
                 <div class="search-box">
-                    <input type="text">
-                    <!--<img src="images/SearchBarNew.png">-->
+                    <input class="visible-desktop" type="text">
+                    <!-- Example search input for mobile version -->
+                    <input class="visible-mobile" type="text" placeholder="Bittersweet, touching, gloomy">
+                </div>
+
+                <!--
+                    Here I add some content to simulate that a user has searched for a movie.
+                     (Since the search bar is only designed, it's not functional)
+                     This will make the mobile version look more like the design I did previously.
+                -->
+
+                <div class="search-results-container visible-mobile">
+                    <h4>Results for bittersweet, touching, gloomy</h4>
+                    <div class="search-results">
+                        <div class="search-result">
+                            <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
+                            <h3 class="text-overlay">The Perks of Being a Wallflower (2012)</h3>
+                        </div>
+                        <div class="search-result hidden">
+                            <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
+                            <h1 class="text-overlay"> Other movie here</h1>
+                        </div>
+                        <a href="">
+                            <img src="images/button-left.png" class="button-left">
+                        </a>
+
+                        <a href="">
+                            <img src="images/button-right.png" class="button-right">
+                        </a>
+                    </div>
                 </div>
 
                 <div class="recommendations">

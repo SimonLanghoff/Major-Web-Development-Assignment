@@ -436,7 +436,7 @@ figure.no-margin > img {
     background:transparent;
     padding:0px 100px 0px 50px; /* Limit input to within search box boundaries */
     text-align: left;
-    width: calc(100% - 150px); /* Width of image - padding left and right*/
+    width: calc(100% - 0px); /* Width of image - padding left and right*/
 }
 
 .recommendations > a {

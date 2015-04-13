@@ -9,7 +9,7 @@
 
 
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <!--<link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="all">-->
+    <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="screen and (max-width: 960px)">
 
     <!--I need to include bootstrap last in order to avoid bugs in collapsible menus. However, it also means I need to add extra markup in CSS to override some bootstrap rules -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -38,9 +38,10 @@
 
             <div id="content" class="grid_9">
                 <div class="movie-info-container">
-                    <img class="no-margin" src="images/PosterTwinPeaks.jpg" alt="Poster for the Twin Peaks Series">
-                    <div class="text-overlay visible-mobile">
-                        <h1>Twin Peaks</h1>
+                    <div class="movie-info-image">
+                        <img class="no-margin" src="images/PosterTwinPeaks.jpg" alt="Poster for the Twin Peaks Series">
+
+                        <h3 class="text-overlay visible-mobile">Twin Peaks</h3>
                     </div>
 
                     <!-- Insert storyline after image, only on mobile (should have been done with JS instead, but could not get it to work. -->
