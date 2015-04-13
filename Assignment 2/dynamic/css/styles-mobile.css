@@ -1,7 +1,7 @@
 /* Override grid layout to be smaller. */
 
 .container_12 {
-    width: 768px;
+    width: 460px;
 }
 
 /* Remove this? */
@@ -39,12 +39,23 @@ header {
     width: 100%;
 }
 
-.top-nav-section {
+/*.top-nav-section {*/
     /* Align nav items to the bottom of the header*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*width: 10% !important;*/
+/*}*/
+
+.top-nav-section {
+    display: none;
+}
+
+.mobile-navbar {
+    display: inline-block;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 10% !important;
+    top: 20px;
+
 }
 
 /* Make the bootstrap navbar transparent */
@@ -61,58 +72,12 @@ header {
     background-color: #000000 /* change this to any color you want! */;
 }
 
-.top-nav-section > nav > ul {
-    list-style: none;
-    padding-left: 0;
-    padding-top: 35px;
-    margin: 0px;
-}
-
-.top-nav-section > nav > ul > li {
-    display: inline-block;
-    width: 50px;
-    padding-left: 15px;
-    margin-right: 100px;
-    font-size: 20px;
-    text-transform: capitalize;
-    font-weight: bold;
-}
-
-.top-nav-section > nav > ul > li a {
-    text-decoration: none;
-    color: #cccccc;
-}
-
-.top-nav-section > nav > ul > li a:hover {
-    color: #ce2127;
-}
-
 .banner-logo-container {
     height: 100%;
     background-position: bottom;
     background-image: url("../images/bannerlogo");
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-.banner-logo-container > figure {
-    margin: 0px;
-}
-
-.banner-logo-container > figure > img {
-    vertical-align: middle;
-}
-
-/************* Main Content ********/
-
-.wrapper {
-    background-color: #ebebeb;
-    width: 100%;
-    height: 100%;
-    /* Make sure the wrapper extends across aside and main content */
-    overflow: hidden;
-    /* Needed to ensure correct calculation of height by children. */
-    position: relative;
 }
 
 
@@ -316,6 +281,7 @@ figure.no-margin > img {
     width: calc(100% - 20px);
 }
 
+/* Adds padding between mobile headers */
 .movie-info-container {
     display: inline-block;
     width: 100%;
@@ -324,31 +290,33 @@ figure.no-margin > img {
 
 .movie-info-container > img {
     display: inline-block;
-    width: calc(100% - 10px);
+    width: 100%;
     max-height: 200px;
-
-    margin: 0px 10px 10px 0px;
 }
 
-.movie-info > h1 {
+.text-overlay {
     float: left;
-    position: absolute;
-    top: 160px;
-    left: 20px;
-    margin: 10px 0px 0px 0px;
+    /* Small hax to let the text float up onto the image*/
+    margin-top: -50px;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    color: darkgray;
+}
+
+.text-overlay > h1 {
+    margin: 0px 0px 0px 10px;
 }
 
 .movie-info {
+    padding-top: 10px;
     display: inline-block;
-    width: calc(80% - 10px);
+    width: calc(100% - 10px);
     vertical-align: top;
 }
 
-.rating {
-    display: inline-block;
-    float: right;
-    text-align: center;
 
+.movie-info-list {
+    width: 70%;
 }
 
 .movie-info-list > ul > li {
@@ -361,6 +329,24 @@ figure.no-margin > img {
 
 .movie-info-list > ul {
     padding: 0px;
+}
+
+.rating {
+    width: 30%;
+}
+
+.rating > a {
+    float: right;
+}
+
+
+/* Adds padding between mobile headers */
+.similar-movies-container {
+    margin-bottom: 10px;
+}
+
+.similar-movies {
+    padding-top: 10px;
 }
 
 .similar-movies > .image-grid {
@@ -409,10 +395,13 @@ figure.no-margin > img {
     display: inline-block;
 }
 
-.user-comments > h2 {
-    /* Make room for collapsible button*/
-    width: calc(100% - 30px);
-    margin-bottom: 5px;
+.comments-container {
+    padding-top: 10px;
+}
+
+/* Adds padding between mobile headers */
+.user-comments-container {
+    padding-bottom: 10px;
 }
 
 .comment * {
@@ -440,16 +429,11 @@ figure.no-margin > img {
     width: calc(90% - 20px);
 }
 
-.comment-text > h4 {
-    height: 20px;
-    margin: 0px 0px 10px 0px;
-    width: 80%;
-}
-
 .date {
     height: 20px;
-    width: calc(20% - 5px);
+    width: calc(30% - 5px);
     margin: 0px 0px 10px 0px;
+    text-align: right;
 }
 
 .comment-text > p {
@@ -591,6 +575,44 @@ footer > p {
     vertical-align: bottom;
 }
 
+.horizontal-separator {
+    display: none;
+}
+
+br {
+    display: none;
+}
+
+.visible-mobile {
+    display: inherit;
+}
+
+.visible-desktop {
+    display: none;
+}
+
+.mobile-header {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    border: thin;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #c2c2c2;
+}
+
+.mobile-header > h2 {
+    display: inline-block;
+    width: calc(100% - 35px);
+    padding: 0px 5px 5px 5px;
+    margin: 0px;
+}
+
+.mobile-border {
+    border-left: groove;
+    border-right: groove;
+    border-bottom: groove;
+    border-radius: 0px 0px 10px 10px;
+}
 
 
 

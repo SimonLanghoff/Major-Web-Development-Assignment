@@ -232,6 +232,7 @@ figure.no-margin > img {
     margin-top: 0px;
 
 }
+
 .news-item > article > div > figure {
     margin: 0px;
     clear: right;
@@ -285,37 +286,28 @@ figure.no-margin > img {
     margin: 10px 0px 0px 0px;
 }
 
-
 .movie-info-container > img {
-    display: inline-block;
     width: calc(20% - 10px);
     margin: 0px 10px 10px 0px;
-}
-
-.movie-info {
-    display: inline-block;
-    width: calc(80% - 10px);
-    vertical-align: top;
+    float: left;
 }
 
 .rating {
-    display: inline-block;
     float: right;
     text-align: center;
-
 }
 
 .movie-info-list > ul > li {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-
     margin: 0px 0px 0px 0px;
 }
 
-.movie-info-list > ul {
-    padding: 0px;
-}
+/* Specific ID selector has more weight, so overrides bootstrap's block display */
+/*#collapse-movie-info {*/
+    /*display: inline-block;*/
+/*}*/
 
 .similar-movies > .image-grid {
     vertical-align: top;
@@ -356,8 +348,7 @@ figure.no-margin > img {
 }
 
 /* Override bootstrap styling */
-
-hr {
+.horizontal-separator {
     display: block;
     -webkit-margin-before: 0.5em;
     -webkit-margin-after: 0.5em;
@@ -407,13 +398,14 @@ hr {
 .comment-text > h4 {
     height: 20px;
     margin: 0px 0px 10px 0px;
-    width: 80%;
+    width: 70%;
 }
 
 .date {
     height: 20px;
-    width: calc(20% - 5px);
+    width: calc(30% - 5px);
     margin: 0px 0px 10px 0px;
+    text-align: right;
 }
 
 .comment-text > p {
@@ -555,6 +547,6 @@ footer > p {
     vertical-align: bottom;
 }
 
-.toggle-button {
+.visible-mobile {
     display: none;
 }
