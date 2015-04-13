@@ -259,6 +259,10 @@ figure.no-margin > img {
     width: 100%;
     min-height: 200px;
     max-height: 200px;
+
+    /* Override desktop css */
+    float: none;
+    margin: 0px 0px
 }
 
 .movie-info {
@@ -266,6 +270,7 @@ figure.no-margin > img {
     display: inline-block;
     width: calc(100% - 10px);
     vertical-align: top;
+    position: relative;
 }
 
 .movie-info-list {
@@ -286,11 +291,33 @@ figure.no-margin > img {
 
 .rating {
     width: 30%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+
+}
+
+.rating > img {
+    float: right;
 }
 
 .rating > a {
-    float: right;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
 }
+
+@media screen and (max-width: 500px) {
+    .rating {
+        display: none;
+    }
+
+    .movie-info-list {
+        width: 100%;
+    }
+}
+
+
 
 /* Add mobile headers and borders */
 .mobile-header {
@@ -328,15 +355,14 @@ figure.no-margin > img {
 }
 
 .similar-movies > .image-grid {
-    width: 100%;
+    display: block;
+    margin: 0px auto;
+    max-width: 800px;
+    width: 460px;
 }
 
 .similar-movies > .similar-movie-expanded {
     display: none;
-    /*vertical-align: bottom;*/
-    /*display: inline-block;*/
-    /*width: calc(60% - 10px);*/
-    /*height: 100%;*/
 }
 
 /* Only display title and genre of similar movies to conserve space */
@@ -344,27 +370,15 @@ figure.no-margin > img {
     display: none;
 }
 
-/*.similar-movie-expanded > img {*/
-    /*width: 50%;*/
-/*}*/
-
-/*.similar-movie-expanded > .info-container {*/
-    /*margin-left: 5px;*/
-    /*display: inline-block;*/
-    /*width: calc(50% - 10px);*/
-    /*vertical-align: top;*/
-/*}*/
-
-/*.info-container > h2 {*/
-/*font-weight: normal;*/
-/*margin: 15px 0px 5px 0px;*/
-/*}*/
-
+.image-grid {
+    margin: 0px auto;
+}
 
 /* For mobile version just make the imgs larger and link */
 .image-grid > a > img {
-    margin: 5px 5px;
-    width: 30%;
+    margin: 10px 10px;
+    width: 28%;
+    max-width: 200px;
 }
 
 /*.movie-1 , .movie-2, .movie-3, .movie-4, .movie-5, .movie-6 {*/

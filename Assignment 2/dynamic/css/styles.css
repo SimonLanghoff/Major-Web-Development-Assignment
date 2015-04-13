@@ -286,7 +286,7 @@ figure.no-margin > img {
     margin: 10px 0px 0px 0px;
 }
 
-.movie-info-container > img {
+.movie-info-image > img {
     width: calc(20% - 10px);
     margin: 0px 10px 10px 0px;
     float: left;
