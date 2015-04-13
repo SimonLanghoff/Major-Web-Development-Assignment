@@ -408,14 +408,9 @@ figure.no-margin > img {
 
 
 /* For mobile version just make the imgs larger and link */
-.image-grid > img {
+.image-grid > a > img {
     margin: 5px 5px;
     width: 30%;
-}
-
-.image-grid > h2 {
-    margin: 10px 0px 0px 0px;
-    text-align: center;
 }
 
 /*.movie-1 , .movie-2, .movie-3, .movie-4, .movie-5, .movie-6 {*/
