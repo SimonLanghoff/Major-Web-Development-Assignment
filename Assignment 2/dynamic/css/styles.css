@@ -197,11 +197,6 @@ figure.no-margin > img {
     width: calc(50% - 5px);
 }
 
-.news-item-main {
-    float: left;
-    clear: right;
-}
-
 .news-item-main > article > img {
     /* Centers image */
     display: block;
@@ -209,9 +204,10 @@ figure.no-margin > img {
     margin: 10px auto 0px auto;
 }
 
-.news-item-main > article > div > h1, .news-item-main > article > div > p {
+.event-headline > h1:first-child, .news-item-main > article > div > p {
     font-weight: bold;
     margin: 5px 10px 5px 10px;
+    display: inline-block;
 }
 
 .news-item-main-backdrop {

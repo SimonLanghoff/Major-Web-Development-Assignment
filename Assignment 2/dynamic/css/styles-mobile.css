@@ -14,11 +14,6 @@
     width: calc(100% - 20px);
 }
 
-/* Remove this? */
-/*.container_12 .grid_3 {*/
-    /*width: 172px;*/
-/*}*/
-
 body {
     width: 100%;
     min-width: 10%;
@@ -92,25 +87,6 @@ p {
     display: none;
 }
 
-.next-event {
-    padding-bottom: 10px;
-}
-
-.next-event > p {
-    font-size: large;
-}
-
-.next-event > h4 {
-    margin: 15px 0px 10px 0px;
-    font-size: x-large;
-    font-weight: normal;
-}
-
-.next-event > figure > figcaption {
-    font-weight: bold;
-    font-size: larger;
-}
-
 figure.no-margin > img {
     width: 65%;
 }
@@ -119,100 +95,37 @@ figure.no-margin > img {
 /*********** Home Page **************/
 /************************************/
 
+/* Use up all available space */
 #home-page {
-    width: 960px;
-}
-
-#content article {
-    display: inline-block;
-}
-
-.article-headline-container {
-    width: 70%;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.article-headline-container * {
-    display: inline-block;
-}
-
-.article-headline {
-    font-weight: bolder;
-    font-size: x-large;
     width: 100%;
-    margin: 0px;
-    display: inline-block;
-    /* clear: both; */
 }
 
-.article-headline-container > h4 {
-    width: calc(50% - 5px);
-}
-
-.news-item-main {
+/* Show event-info in top right corner of the backdrop and
+    align the headlines accordingly */
+.event-headline > h1 {
     float: left;
-    clear: right;
+    font-size: x-large;
+    margin: 0;
 }
 
-.news-item-main > article > img {
-    /* Centers image */
-    display: block;
-    width: 100%;
-    margin: 10px auto 0px auto;
-}
-
-.news-item-main > article > div > h1, .news-item-main > article > div > p {
+.event-headline > h1.visible-mobile {
+    float: right;
+    font-size: x-large;
+    margin: 0;
     font-weight: bold;
     margin: 5px 10px 5px 10px;
 }
 
+/* Make sure the paragraph text does not interflow with the floated headlines */
+.event-headline {
+    clear: both;
+}
+
+/* Remove the backdrop */
 .news-item-main-backdrop {
-    background: linear-gradient(to bottom, #d51441 0%,#990033 100%);
+    background: 0, 0, 0, 0;
     float: left;
     margin-bottom: 10px;
-}
-
-.news-item {
-    float: left;
-    clear: right;
-    max-width: 100%; /* Ensures that separator lines do not cross boundaries */
-}
-
-.news-item > article > h2 {
-    width: 100%;
-    font-weight: bold;
-    margin-top: 0px;
-
-}
-.news-item > article > div > figure {
-    margin: 0px;
-    clear: right;
-}
-
-.news-item > article > p {
-    width: 70%;
-    margin-top: 0px;
-    float: left;
-    font-size: smaller;
-}
-
-.news-item-images {
-    float: right;
-    width: calc(30% - 10px);
-    margin-bottom: 15px;
-    margin-top: 5px;
-}
-
-.news-item-images > figure > img {
-    /* Center align news item images*/
-    padding-bottom: 10px;
-    display: block;
-    margin: auto;
-
-    /* Setting*/
-    height: auto;
-    width: 100%;
 }
 
 /* Horizontal Separator Line between news items.*/
@@ -220,8 +133,21 @@ figure.no-margin > img {
     width:90%;
     height: 1px !important;
     background: #000000;
-    margin: 20px auto 20px auto;
+    margin: 0px auto 20px auto;
 }
+
+/* Make the text even smaller if the screen is small */
+@media screen and (max-width: 600px) {
+    .event-headline > h1 , .event-headline > h1.visible-mobile{
+        font-size: large;
+    }
+
+    .news-item-main-backdrop > p{
+        font-size: smaller;
+    }
+}
+
+
 
 
 /************************************/
