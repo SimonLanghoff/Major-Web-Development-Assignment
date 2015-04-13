@@ -8,9 +8,8 @@
     <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
 
 
-
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <!--<link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="all">-->
+    <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="all">
 
     <!--I need to include bootstrap last in order to avoid bugs in collapsible menus. However, it also means I need to add extra markup in CSS to override some bootstrap rules -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -23,6 +22,7 @@
 
     <script src="js/dynamicLoad.js"></script>
     <script src="js/facebook-sdk.js"></script>
+
 
 </head>
 <body>
@@ -224,21 +224,15 @@
             </div>
         </div>
 
-        <!-- Dynamically load footer-->
-        <div id="footer"></div>
+        <!-- Simple Footer -->
+        <footer class="text-center">
+            <p>
+                Copyright &copy; ITU.film 2015
+            </p>
+        </footer>
     </div>
 
-    <script>
-        var pTags = $( "#collapse-comments" );
-//        TODO: Make borders appear on load or make sure that the class "in" is removed when on mobile versions
-        $( ".toggle-button" ).click(function() {
-            console.log(pTags.parent());
-            if ( pTags.parent().hasClass( "mobile-border" ) && pTags.hasClass("in") ) {
-                pTags.unwrap();
-            } else {
-                pTags.wrap( "<div class=\"mobile-border visible-mobile\"></div>" );
-            }
-        });
-    </script>
+    <script src="js/functions.js"></script>
+
 </body>
 </html>

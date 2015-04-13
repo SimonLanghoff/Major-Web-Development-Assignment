@@ -339,6 +339,30 @@ figure.no-margin > img {
     float: right;
 }
 
+/* Add mobile headers and borders */
+.mobile-header {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    border: thin;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #c2c2c2;
+}
+
+.mobile-header > h2 {
+    display: inline-block;
+    width: calc(100% - 35px);
+    padding: 0px 5px 5px 5px;
+    margin: 0px;
+}
+
+.mobile-border {
+    border-left: groove;
+    border-right: groove;
+    border-bottom: groove;
+    border-radius: 0px 0px 10px 10px;
+}
+
 
 /* Adds padding between mobile headers */
 .similar-movies-container {
@@ -350,31 +374,43 @@ figure.no-margin > img {
 }
 
 .similar-movies > .image-grid {
-    vertical-align: top;
-    display: inline-block;
-    width: 40%;
+    width: 100%;
 }
 
 .similar-movies > .similar-movie-expanded {
-    vertical-align: bottom;
-    display: inline-block;
-    width: calc(60% - 10px);
-    height: 100%;
+    display: none;
+    /*vertical-align: bottom;*/
+    /*display: inline-block;*/
+    /*width: calc(60% - 10px);*/
+    /*height: 100%;*/
 }
 
-.similar-movie-expanded > img {
-    width: 50%;
+/* Only display title and genre of similar movies to conserve space */
+.movie-1 > img, .movie-1 > .info-container > p:nth-child(3) {
+    display: none;
 }
 
-.similar-movie-expanded > .info-container {
-    margin-left: 5px;
-    display: inline-block;
-    width: calc(50% - 10px);
-    vertical-align: top;
-}
+/*.similar-movie-expanded > img {*/
+    /*width: 50%;*/
+/*}*/
 
+/*.similar-movie-expanded > .info-container {*/
+    /*margin-left: 5px;*/
+    /*display: inline-block;*/
+    /*width: calc(50% - 10px);*/
+    /*vertical-align: top;*/
+/*}*/
+
+/*.info-container > h2 {*/
+/*font-weight: normal;*/
+/*margin: 15px 0px 5px 0px;*/
+/*}*/
+
+
+/* For mobile version just make the imgs larger and link */
 .image-grid > img {
     margin: 5px 5px;
+    width: 30%;
 }
 
 .image-grid > h2 {
@@ -382,10 +418,11 @@ figure.no-margin > img {
     text-align: center;
 }
 
-.info-container > h2 {
-    font-weight: normal;
-    margin: 15px 0px 5px 0px;
-}
+/*.movie-1 , .movie-2, .movie-3, .movie-4, .movie-5, .movie-6 {*/
+    /*display: inline-block !important;*/
+    /*visibility: visible;*/
+/*}*/
+
 
 /************************************/
 /************* Comments *************/
@@ -589,29 +626,6 @@ br {
 
 .visible-desktop {
     display: none;
-}
-
-.mobile-header {
-    display: inline-block;
-    width: 100%;
-    border-radius: 10px;
-    border: thin;
-    box-shadow: 2px 2px 2px #888888;
-    background-color: #c2c2c2;
-}
-
-.mobile-header > h2 {
-    display: inline-block;
-    width: calc(100% - 35px);
-    padding: 0px 5px 5px 5px;
-    margin: 0px;
-}
-
-.mobile-border {
-    border-left: groove;
-    border-right: groove;
-    border-bottom: groove;
-    border-radius: 0px 0px 10px 10px;
 }
 
 

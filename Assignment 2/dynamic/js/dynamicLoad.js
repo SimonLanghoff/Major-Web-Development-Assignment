@@ -12,8 +12,3 @@ $(function(){
 $(function(){
     $("#header_dynamic").load("header_dynamic.html");
 });
-
-// Load the header
-$(function(){
-    $("#footer").load("footer.html");
-});
