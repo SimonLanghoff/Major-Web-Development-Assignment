@@ -3,12 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Major Web Assignment Part 2 - Simon Langhoff</title>
+
     <link href="css/960_12_col.css" type="text/css" rel="stylesheet">
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <!-- Add Mobile designs-->
     <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="screen and (max-width: 960px)">
+
     <!--I need to include bootstrap last in order to avoid bugs in collapsible menus. However, it also means I need to add extra markup in CSS to override some bootstrap rules -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
@@ -19,9 +19,10 @@
 
     <script src="js/functions.js"></script>
 
+
 </head>
 <body>
-    <div id="movie-page" class="container_12">
+    <div id="recommendations-page" class="container_12">
         <header>
             <div class="banner-logo-container grid_3">
                 <!-- Image loaded as background image in css-->
@@ -54,11 +55,12 @@
             <div>
                 <nav class="no-margin">
                     <a href="./index.html">Home</a>
-                    <a href="./movies.html">Movies</a>
+                    <a href="/movies.html">Movies</a>
                     <a href="">About</a>
                 </nav>
             </div>
         </div>
+
 
         <!--Page wrapper-->
         <div class="wrapper">
@@ -110,200 +112,168 @@
             <div class="separator"> </div>
 
             <div id="content" class="grid_9">
-                <div class="movie-info-container">
-                    <div class="movie-info-image">
-                        <img class="no-margin" src="images/PosterTwinPeaks.jpg" alt="Poster for the Twin Peaks Series">
+                <h1>ITU.film's Movie Database</h1>
 
-                        <h3 class="text-overlay visible-mobile">Twin Peaks</h3>
-                    </div>
+                <!-- Image loaded in css -->
+                <div class="search-box">
+                    <input class="visible-desktop" type="text">
+                    <!-- Example search input for mobile version -->
+                    <input class="visible-mobile" type="text" placeholder="Bittersweet, touching, gloomy">
+                </div>
 
-                    <!-- Insert storyline after image, only on mobile (should have been done with JS instead, but could not get it to work. -->
-                    <div class="visible-mobile">
-                        <h3 class="no-margin">Storyline</h3>
-                        <p>
-                            The body of a young girl (Laura Palmer) is washed up on a beach near the small
-                            Washington state town of Twin Peaks. FBI Special Agent Dale Cooper is called in to
-                            investigate her strange demise only to uncover a web of mystery that ultimately leads
-                            him deep into the heart of the surrounding woodland and his very own soul.
-                        </p>
-                    </div>
+                <!--
+                    Here I add some content to simulate that a user has searched for a movie.
+                     (Since the search bar is only designed, it's not functional)
+                     This will make the mobile version look more like the design I did previously.
+                -->
 
-                    <div class="mobile-header visible-mobile toggle-button" data-toggle="collapse" data-target="#collapse-movie-info">
-                        <!-- Make Movie Info collapsible -->
-                        <h2>Movie Information</h2>
-                        <!-- The button is just dummy content, used to indicate that it is clickable, but clicking anywhere will result in collapsing-->
-                        <button type="button" >+</button>
-                    </div>
-                    <div id="collapse-movie-info" class="movie-info collapse in">
-
-                        <h1 class="visible-desktop">Twin Peaks (1990)</h1>
-                        <hr class="horizontal-separator no-margin">
-
-                        <div class="rating">
-                            <img src="images/RatingStar.png" alt="A star-shaped polygon with the rating of the movie inside">
-                            <br>
-                            <a href="#">4 Recommendations</a>
+                <div class="search-results-container visible-mobile">
+                    <h4>Results for bittersweet, touching, gloomy</h4>
+                    <div class="search-results">
+                        <div class="search-result">
+                            <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
+                            <h3 class="text-overlay">The Perks of Being a Wallflower (2012)</h3>
                         </div>
+                        <div class="search-result hidden">
+                            <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
+                            <h1 class="text-overlay"> Other movie here</h1>
+                        </div>
+                        <a href="">
+                            <img src="images/button-left.png" class="button-left">
+                        </a>
 
-                        <div class="movie-info-list">
-                            <ul>
-                                <li>Type: TV Series</li>
-                                <li>Genre: Drama, Mystery, Thriller</li>
-                                <li>Playtime: 47 minutes</li>
-                                <li>Creators: Mark Frost, David Lynch</li>
-                                <li>Stars: Kyle MacLachlan, Michael Ontkean, Mädchen Amick</li>
-                                <li>Moods: Adventurous, Spooky, Experimental</li>
+                        <a href="">
+                            <img src="images/button-right.png" class="button-right">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <div class="user-comments">
+                        <h2> Latest Recommendations </h2>
+                        <article class="comment row-even">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
+                                <span class="date">23 feb. 2015</span>
+                                <p>
+                                    'The Terminator' is not a perfect picture. The movie lags in some parts,
+                                    and the romance element is fairly contrived. Despite all that the movie brims with
+                                    energy and promise, a script that mostly delivers, characters you can enjoy,
+                                    and the ultimate Arnie role.
+                                    <br>
+                                    Well worth catching. 8/10.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="comment">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
+                                <span class="date">20 feb. 2015</span>
+                                <p>
+                                    'Her' is a complex film with a much deeper meaning that lies beneath the surface.
+                                    A beautifully crafted motion picture, this quirky love story is sure to resonate with
+                                    you once you've seen it. It is an extremely interesting (and realistic) look at the future
+                                    - Jonze's quaint and poignant film is a must-see! 9/10
+                                </p>
+                            </div>
+                        </article>
+                        <article class="comment row-even">
+                            <div class="comment-picture">
+                                <img src="images/profile_dummy.jpg">
+                            </div>
+                            <div class="comment-text">
+                                <h4>Billy Joel recommended <a href="#">The Room</a></h4>
+                                <span class="date">19 feb. 2015</span>
+                                <p>
+                                    This film is completely worth seeing.
+                                    A friend of mine recently said it was as if a deer made a movie about human interaction,
+                                    unable to comprehend what it is to be a human being. It is hilarious.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <a href="#">More recommendations...</a>
+                </div>
+
+
+                <div class="list-wrapper container_9">
+                    <div class="movie-list">
+                        <h2>Latest Movies</h2>
+                        <ul class="no-margin">
+                            <li>
+                                <a href="#">Her</a>
+                            </li>
+                            <li>
+                                <a href="#">The Perks of Being a Wallflower</a>
+                            </li>
+                            <li>
+                                <a href="#">Searching for Sugar Man</a>
+                            </li>
+                            <li>
+                                <a href="movie.html">Twin Peaks</a>
+                            </li>
+                            <li>
+                                <a href="#">Terminator</a>
+                            </li>
+                            <li>
+                                <a href="#">The Room</a>
+                            </li>
+                        </ul>
+                    <a href="#">More Movies...</a>
+                    </div>
+                    <div class="event-wrapper">
+                        <div class="event-list">
+                            <h2>Screening Events</h2>
+                            <ul class="no-margin">
+                                <li>
+                                    <a href="#">Game of Thrones Premiere</a>
+                                </li>
+                                <li>
+                                    <a href="#">Her</a>
+                                </li>
+                                <li>
+                                    <a href="#">The Perks of Being a Wallflower</a>
+                                </li>
+                                <li>
+                                    <a href="#">Searching for Sugar Man</a>
+                                </li>
+                                <li>
+                                    <a href="#">Twin Peaks Season 2 Episode 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Twin Peaks Season 2 Episode Start</a>
+                                </li>
                             </ul>
                         </div>
-                        <hr class="horizontal-separator">
-                        <br>
-                    </div>
-
-                    <!--Instead of moving the div, simply just hide it on mobile. -->
-                    <div class="visible-desktop">
-                        <h3 class="no-margin">Storyline</h3>
-                        <p>
-                            The body of a young girl (Laura Palmer) is washed up on a beach near the small
-                            Washington state town of Twin Peaks. FBI Special Agent Dale Cooper is called in to
-                            investigate her strange demise only to uncover a web of mystery that ultimately leads
-                            him deep into the heart of the surrounding woodland and his very own soul.
-                        </p>
-                    </div>
-                    <hr class="horizontal-separator">
-                </div>
-
-                <!-- Similar Movies-->
-                <div class="similar-movies-container">
-                    <div class="mobile-header visible-mobile toggle-button" data-toggle="collapse" data-target="#collapse-similar-movies">
-                        <!-- Create Headline for mobile version-->
-                        <h2>Similar Movies</h2>
-                        <!-- The button is just dummy content, used to indicate that it is clickable, but clicking anywhere will result in collapsing-->
-                        <button type="button">+</button>
-                    </div>
-
-                    <div id="collapse-similar-movies" class="collapse in similar-movies">
-                        <div class="image-grid no-margin">
-                            <h2 class="visible-desktop">Similar Movies</h2>
-                            <!-- Added div to horizontally align picture grid when viewed on mobile. -->
-                            <a href="">
-                                <img class="movie-thumbnail movie-1" src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
-                            </a>
-                            <a href="">
-                                <img class="movie-thumbnail movie-2" src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
-                            </a>
-                            <a href="">
-                                <img class="movie-thumbnail movie-3" src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
-                            </a>
-                            <a href="">
-                                <img class="movie-thumbnail movie-4" src="images/Movies/The%20Xfiles.jpg" alt="Movie Poster for The X files">
-                            </a>
-                            <a href="">
-                                <img class="movie-thumbnail movie-5" src="images/Movies/Mulholland%20Drive.jpg" alt="Movie Poster for Mulholland Drive">
-                            </a>
-                            <a href="">
-                                <img class="movie-thumbnail movie-6" src="images/Movies/Lost%20Highway.jpg" alt="Movie Poster for Lost Highway">
-                            </a>
-                    </div>
-                        <!-- Highlighted Movie info should only be visible on desktop -->
-                        <!-- A section for each similar movie is requested but only one is visible at a time -->
-                        <div class="similar-movie-expanded movie-1 no-margin">
-                            <img src="images/Movies/blue%20velvet%20high.jpg" alt="A higher resolution movie poster for Blue Velvet">
-                            <div class="info-container">
-                                <h2>Blue Velvet</h2>
-                                <p><strong>Crime, Drama, Mystery</strong></p>
-                                <p>
-                                    The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.
-                                </p>
-                            </div>
+                        <div class="event-dates">
+                            <ul class="no-margin">
+                                <li>
+                                    4th Mar
+                                </li>
+                                <li>
+                                    27th Feb
+                                </li>
+                                <li>
+                                    13th Feb
+                                </li>
+                                <li>
+                                    6th Feb
+                                </li>
+                                <li>
+                                    30th Oct
+                                </li>
+                                <li>
+                                    23rd Oct
+                                </li>
+                            </ul>
                         </div>
-                        <div class="similar-movie-expanded movie-2 no-margin hidden">
-                            <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie poster for Twin Peaks">
-                            <div class="info-container">
-                                <h2>Twin Peaks: Fire Walk With Me</h2>
-                                <p><strong>Thriller, Mystery</strong></p>
-                                <p>
-                                    A young FBI agent disappears while investigating a murder miles from Twin Peaks that may be related to the future murder of Laura Palmer; the last week of the life of Laura Palmer is chronicled.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="similar-movie-expanded movie-3 no-margin hidden">
-                            <img src="images/Movies/Eraser%20Head.jpg" alt="Movie poster for Eraserhead">
-                            <div class="info-container">
-                                <h2>Eraserhead</h2>
-                                <p><strong>Drama, Horror, Mystery</strong></p>
-                                <p>
-                                    Henry Spencer tries to survive his industrial environment, his angry girlfriend, and the unbearable screams of his newly born mutant child.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="similar-movie-expanded movie-4 no-margin hidden">
-                            <img src="images/Movies/The%20Xfiles.jpg" alt="Movie poster for The X-files">
-                            <div class="info-container">
-                                <h2>The X-files</h2>
-                                <p><strong>Drama, Mystery</strong></p>
-                                <p>
-                                    Two FBI agents, Fox Mulder the believer and Dana Scully the skeptic, investigate the strange and unexplained while hidden forces work to impede their efforts.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="similar-movie-expanded movie-5 no-margin hidden">
-                            <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie poster for Mulholland Drive">
-                            <div class="info-container">
-                                <h2>Mulholland Drive</h2>
-                                <p><strong>Drama, Thriller, Mystery</strong></p>
-                                <p>
-                                    After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="similar-movie-expanded movie-6 no-margin hidden">
-                            <img src="images/Movies/Lost%20Highway.jpg" alt="Movie poster for Lost Highway">
-                            <div class="info-container">
-                                <h2>Lost Highway</h2>
-                                <p><strong>Drama, Mystery, Thriller</strong></p>
-                                <p>
-                                    After a bizarre encounter at a party, a jazz saxophonist is framed for the murder of his wife and sent to prison, where he inexplicably morphs into a young mechanic and begins leading a new life.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="user-comments-container">
-                    <div class="user-comments">
-                        <h2 class="visible-desktop">Comments</h2>
-                        <!-- Using Bootstrap to collapse content. Somehow it does not work correctly though-->
-                        <div class="mobile-header visible-mobile toggle-button" data-toggle="collapse" data-target="#collapse-comments">
-                            <h2>Comments</h2>
-                            <!-- The button is just dummy content, used to indicate that it is clickable, but clicking anywhere will result in collapsing-->
-                            <button type="button">+</button>
-                        </div>
-                        <div id="collapse-comments" class="comments-container visible-desktop collapse in">
-                            <article class="comment row-even">
-                                <div class="comment-picture">
-                                    <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
-                                </div>
-                                <div class="comment-text">
-                                    <h4>Simon Langhoff</h4>
-                                    <span class="date">19 feb. 2015</span>
-                                    <p>
-                                        I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever
-                                    </p>
-                                </div>
-                            </article>
-                            <article class="comment">
-                                <div class="comment-picture">
-                                    <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
-                                </div>
-                                <div class="comment-text">
-                                    <h4>Billy</h4>
-                                    <span class="date">19 feb. 2015</span>
-                                    <p>
-                                        Kyle MacLachlan &lt;3
-                                    </p>
-                                </div>
-                            </article>
-                        </div>
+                    <a href="#">More Events...</a>
                     </div>
                 </div>
             </div>
@@ -316,6 +286,5 @@
             </p>
         </footer>
     </div>
-
 </body>
 </html>
