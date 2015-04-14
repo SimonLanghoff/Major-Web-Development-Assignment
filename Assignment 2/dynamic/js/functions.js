@@ -1,12 +1,14 @@
 // Function to toggle borders on the collapsible elements
 jQuery(document).ready(function($) {
     $( ".toggle-button" ).click(function() {
-        var pTags = $(this).next( "div.collapse" );
-        console.log(pTags);
-        if ( $(this).next().hasClass( "mobile-border" ) && !pTags.hasClass("collapsed")) {
-            $(".wrapping-class").children().unwrap();
-        } else {
-            pTags.wrap( "<div class=\"mobile-border visible-mobile wrapping-class\"></div>" );
+        var wrappedClass = $(this).next( "div.collapse" );
+        // Is the sibling a border? And is it not collapsed? That means we are collapsing content that is wrapped in a border and we need to unwrap
+        if ( $(this).next().hasClass( "mobile-border" ) && !wrappedClass.hasClass("collapsed")) {
+            // Unwrap the border
+            $(this).next().children().unwrap();
+        } else if (!wrappedClass.hasClass("in")){
+            // Only wrap content in a border if we are "opening" a container.
+            wrappedClass.wrap( "<div class=\"mobile-border visible-mobile wrapping-class\"></div>" );
         }
     });
 });
