@@ -60,8 +60,8 @@
           <file leaf-file-name="styles-mobile.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/styles-mobile.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2280" max-vertical-offset="7095">
-                  <caret line="176" column="69" selection-start-line="176" selection-start-column="69" selection-end-line="176" selection-end-column="69" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="7080">
+                  <caret line="175" column="69" selection-start-line="175" selection-start-column="69" selection-end-line="175" selection-end-column="69" />
                   <folding />
                 </state>
               </provider>
@@ -71,20 +71,20 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="styles-mobile.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="styles-mobile.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/styles-mobile.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="7095">
-                  <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.35420743" vertical-offset="5338" max-vertical-offset="7080">
+                  <caret line="380" column="1" selection-start-line="380" selection-start-column="1" selection-end-line="380" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/functions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5490982" vertical-offset="217" max-vertical-offset="1260">
+                <state vertical-scroll-proportion="-9.145454" vertical-offset="262" max-vertical-offset="1260">
                   <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
                   <folding />
                 </state>
@@ -115,12 +115,12 @@
         <option value="$PROJECT_DIR$/header_dynamic.html" />
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/sidebar.html" />
-        <option value="$PROJECT_DIR$/css/styles-mobile.css" />
         <option value="$PROJECT_DIR$/js/functions.js" />
         <option value="$PROJECT_DIR$/recommendations.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/movies.html" />
         <option value="$PROJECT_DIR$/movie.html" />
+        <option value="$PROJECT_DIR$/css/styles-mobile.css" />
       </list>
     </option>
   </component>
@@ -460,7 +460,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5490982" vertical-offset="217" max-vertical-offset="1260">
+        <state vertical-scroll-proportion="-9.145454" vertical-offset="262" max-vertical-offset="1260">
           <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
           <folding />
         </state>
@@ -470,14 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-31.25" vertical-offset="90" max-vertical-offset="3135">
           <caret line="56" column="39" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/styles-mobile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2280" max-vertical-offset="7095">
-          <caret line="176" column="69" selection-start-line="176" selection-start-column="69" selection-end-line="176" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -494,6 +486,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.83832335" vertical-offset="0" max-vertical-offset="4890">
           <caret line="56" column="37" selection-start-line="56" selection-start-column="37" selection-end-line="56" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/styles-mobile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35420743" vertical-offset="5338" max-vertical-offset="7080">
+          <caret line="380" column="1" selection-start-line="380" selection-start-column="1" selection-end-line="380" selection-end-column="1" />
           <folding />
         </state>
       </provider>
