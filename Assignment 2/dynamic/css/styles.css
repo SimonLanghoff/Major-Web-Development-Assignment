@@ -356,9 +356,9 @@ figure.no-margin > img {
 
 /* I need to add this in order to make the text appear correctly after
  Going from mobile to desktop  since otherwise, in some cases, the styling is not
- correctly applied. */
+ correctly applied. I suspect this is bootstrap that conflicts with the styling.  */
 @media screen and (min-width: 960px) {
-    div#collapse-movie-info {
+    div#collapse-movie-info, div#collapse-comments, div#collapse-similar-movies {
         display: inline;
     }
 }

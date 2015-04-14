@@ -1,4 +1,4 @@
-//        TODO: Make borders appear on load or make sure that the class "in" is removed when on mobile versions
+// Function to toggle borders on the collapsible elements
 jQuery(document).ready(function($) {
     $( ".toggle-button" ).click(function() {
         var pTags = $(this).next( "div.collapse" );
@@ -11,6 +11,7 @@ jQuery(document).ready(function($) {
     });
 });
 
+// Make the nav bar toggable.
 jQuery(document).ready(function($) {
     $("#mobile-menu-button").click(function () {
         $("#mobile-nav-bar").toggleClass("hidden");
