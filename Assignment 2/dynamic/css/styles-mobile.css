@@ -27,42 +27,49 @@ p {
 /*********** Header *****************/
 /************************************/
 
-/*header {*/
-    /*background: linear-gradient(to bottom, #b5bdc8 0%,#828c95 36%,#28343b 100%);*/
-    /*height: 75px;*/
-    /*width: 100%;*/
-    /*position: relative;*/
-/*}*/
+header {
+    position: relative;
+}
+
+
+#mobile-menu-button {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    display: inline-block;
+    top: 40%;
+
+}
+
+#mobile-nav-bar {
+    display: block;
+    width: 100%;
+    background-color: #888888;
+}
+
+#mobile-nav-bar a {
+    display: block;
+    padding: 5px 15px 5px 0px;
+    text-align: right;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: none;
+    color: #cccccc;
+}
+
+#mobile-nav-bar a:hover {
+    color: #ce2127;
+}
 
 /* Make the banner logo take up the whole width (centers it according to whole page width) */
 .banner-logo-container.grid_3 {
     width: 100%;
 }
 
-/*.top-nav-section {*/
-    /* Align nav items to the bottom of the header*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-    /*width: 10% !important;*/
-/*}*/
-
 /* hide the nav links on mobile */
 .top-nav-section {
     display: none;
-}
-
-.mobile-navbar {
-    display: inline-block;
-    position: absolute;
-    top: 20px;
-
-}
-
-/* Make the bootstrap navbar transparent */
-.navbar-inner {
-    background: transparent;
-    margin: 0px auto;
 }
 
 .icon-bar {
@@ -70,7 +77,9 @@ p {
     width: 22px;
     height: 2px;
     border-radius: 1px;
-    background-color: #000000 /* change this to any color you want! */;
+    border-bottom: 3px;
+    margin-bottom: 3px;
+    background-color: #000000
 }
 
 
@@ -285,6 +294,7 @@ figure.no-margin > img {
     border-bottom: groove;
     border-radius: 0px 0px 10px 10px;
     margin-bottom: 5px;
+    width: 100%;
 }
 
 
@@ -301,7 +311,7 @@ figure.no-margin > img {
     display: block;
     margin: 0px auto;
     max-width: 800px;
-    width: 460px;
+    width: 100%;
 }
 
 .similar-movies > .similar-movie-expanded {
@@ -317,10 +327,10 @@ figure.no-margin > img {
     margin: 0px auto;
 }
 
-/* For mobile version just make the imgs larger and link */
+/* For mobile version just make the imgs larger and spread them out evenly */
 .image-grid > a > img {
-    margin: 10px 10px;
-    width: 28%;
+    margin: 10px 4.5%;
+    width: 23%;
     max-width: 200px;
 }
 
@@ -443,15 +453,6 @@ footer > p {
 /************************************/
 /*************** Misc ***************/
 /************************************/
-
-.text-center {
-    text-align: center;
-}
-
-.no-margin {
-    margin: 0px;
-}
-
 .horizontal-separator {
     display: none;
 }

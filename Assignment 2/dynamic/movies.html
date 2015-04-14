@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Major Web Assignment Part 2 - Simon Langhoff</title>
     <!--TODO: 480 pixel width or something-->
@@ -10,6 +11,8 @@
 
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link  href="css/styles-mobile.css" type="text/css" rel="stylesheet" media="screen and (max-width: 960px)">
+
+
 
     <!--I need to include bootstrap last in order to avoid bugs in collapsible menus. However, it also means I need to add extra markup in CSS to override some bootstrap rules -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -23,12 +26,50 @@
     <script src="js/dynamicLoad.js"></script>
     <script src="js/facebook-sdk.js"></script>
 
+    <script src="js/functions.js"></script>
 
 </head>
 <body>
     <div id="movie-page" class="container_12">
-        <!-- Dynamically loaded header -->
-        <div id="header_dynamic"></div>
+
+
+        <header>
+            <div class="banner-logo-container grid_3">
+                <!-- Image loaded as background image in css-->
+            </div>
+
+            <!-- Hidden on mobile version-->
+            <div class="grid_9 top-nav-section visible-desktop">
+                <nav>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./movies.html">Movies</a></li>
+                        <li><a href="./about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Mobile menu button used to toggle mobile nav bar-->
+            <div class="visible-mobile">
+                <div id="mobile-menu-button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- This will display a collapsible menu that is right aligned under the header when the mobile menu butotn is pressed-->
+        <div id="mobile-nav-bar" class="visible-mobile mobile-navigation hidden">
+            <div>
+                <nav class="no-margin">
+                    <a href="./index.html">Home</a>
+                    <a href="./movies.html">Movies</a>
+                    <a href="./about.html">About</a>
+                </nav>
+            </div>
+        </div>
 
         <div class="wrapper">
             <!-- Dynamically load sidebar here.-->
@@ -111,11 +152,12 @@
                     <div id="collapse-similar-movies" class="collapse in similar-movies">
                         <div class="image-grid no-margin">
                             <h2 class="visible-desktop">Similar Movies</h2>
+                            <!-- Added div to horizontally align picture grid when viewed on mobile. -->
                             <a href="">
                                 <img src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
                             </a>
                             <a href="">
-                            <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
+                                <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
                             </a>
                             <a href="">
                                 <img src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
@@ -204,34 +246,32 @@
                             <!-- The button is just dummy content, used to indicate that it is clickable, but clicking anywhere will result in collapsing-->
                             <button type="button">+</button>
                         </div>
-                        <!--<div class="mobile-border visible-mobile">-->
-                            <div id="collapse-comments" class="comments-container visible-desktop collapse in">
-                                <article class="comment row-even">
-                                    <div class="comment-picture">
-                                        <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
-                                    </div>
-                                    <div class="comment-text">
-                                        <h4>Simon Langhoff</h4>
-                                        <span class="date">19 feb. 2015</span>
-                                        <p>
-                                            I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever
-                                        </p>
-                                    </div>
-                                </article>
-                                <article class="comment">
-                                    <div class="comment-picture">
-                                        <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
-                                    </div>
-                                    <div class="comment-text">
-                                        <h4>Billy</h4>
-                                        <span class="date">19 feb. 2015</span>
-                                        <p>
-                                            Kyle MacLachlan &lt;3
-                                        </p>
-                                    </div>
-                                </article>
-                            </div>
-                        <!--</div>-->
+                        <div id="collapse-comments" class="comments-container visible-desktop collapse in">
+                            <article class="comment row-even">
+                                <div class="comment-picture">
+                                    <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
+                                </div>
+                                <div class="comment-text">
+                                    <h4>Simon Langhoff</h4>
+                                    <span class="date">19 feb. 2015</span>
+                                    <p>
+                                        I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="comment">
+                                <div class="comment-picture">
+                                    <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">
+                                </div>
+                                <div class="comment-text">
+                                    <h4>Billy</h4>
+                                    <span class="date">19 feb. 2015</span>
+                                    <p>
+                                        Kyle MacLachlan &lt;3
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -245,7 +285,7 @@
         </footer>
     </div>
 
-    <script src="js/functions.js"></script>
+
 
 </body>
 </html>

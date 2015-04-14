@@ -9,7 +9,7 @@
     </div>
 
     <!-- Hidden on mobile version-->
-    <div class="grid_9 top-nav-section">
+    <div class="grid_9 top-nav-section visible-desktop">
         <nav>
             <ul>
                 <li><a href="./index.html">Home</a></li>
@@ -17,6 +17,15 @@
                 <li><a href="./about.html">About</a></li>
             </ul>
         </nav>
+    </div>
+
+
+    <div class="visible-mobile test">
+        <div id="mobile-menu-button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
     </div>
 
     <!--<nav class="navbar default mobile-navbar">-->
@@ -43,5 +52,19 @@
     <!--</nav>-->
 
 </header>
+<nav id="mobile-nav-bar" class="visible-mobile mobile-navigation">
+    <div>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./movies.html">Movies</a></li>
+            <li><a href="./about.html">About</a></li>
+        </ul>
+    </div>
+</nav>
+<script>
+$( "#mobile-menu-button" ).click(function() {
+    $( "#mobile-nav-bar" ).toggleClass("hidden");
+});
+</script>
 
 
