@@ -357,8 +357,6 @@ figure.no-margin > img {
 /* I need to add this in order to make the text appear correctly after
  Going from mobile to desktop  since otherwise, in some cases, the styling is not
  correctly applied. */
-
-/* Make the text even smaller if the screen is small */
 @media screen and (min-width: 960px) {
     div#collapse-movie-info {
         display: inline;
