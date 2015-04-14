@@ -1,6 +1,4 @@
 /* Override grid layout to be smaller. */
-
-/* Less than 960 then 100%?*/
 .container_12 {
     width: 100%;
 }
@@ -88,7 +86,7 @@ header {
 /************************************/
 
 /* Hide sidebar when on mobile*/
-#sidebar {
+aside.grid_3 {
     display: none;
 }
 
