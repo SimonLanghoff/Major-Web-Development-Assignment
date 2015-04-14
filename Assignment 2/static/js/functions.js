@@ -1,16 +1,21 @@
-//$('.similar-movies-expanded').hover(function() {
-//    $(this).toggleClass('hidden');
-//})
 
-// For each similar movie picture
+// For the image grid: Switch between movie information upon hovering.
+$(document).ready(function() {
+    $(".movie-thumbnail").hover(function() {
+        var movieClass = $(this).attr('class').split(/\s+/)[1];
 
-
-//$('.image-grid').children.each(function() {
-//    $(this).toggleClass('hidden');
-//})
-
-
-// For each image in image grid, add hover function (also save variable with class name
-// for each similar-movie-expanded, if hasclass hidden && hasClass (same movie) remove hidden.
-// else if hasClass hidden do nothing otherwise add class hidden
-//
+        var movieList = $(".similar-movie-expanded");
+        $.each( movieList, function(index, item){
+            // Convert DOM elemet to jquery object
+            var currentElement = $(item);
+            // If the movie has the same class as the one we hovered above
+            // Show it by remove hidden class
+            if (currentElement.hasClass(movieClass)) {
+                currentElement.removeClass("hidden");
+            } else {
+                // Make sure that all other elements are hidden.
+                currentElement.addClass("hidden");
+            }
+        });
+    });
+});
