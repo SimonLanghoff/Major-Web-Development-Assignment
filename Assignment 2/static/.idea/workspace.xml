@@ -37,20 +37,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2580">
-                  <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+                <state vertical-scroll-proportion="0.7771174" vertical-offset="1907" max-vertical-offset="2580">
+                  <caret line="162" column="17" selection-start-line="157" selection-start-column="7" selection-end-line="162" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="movies.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="movies.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/movies.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.33281735" vertical-offset="2125" max-vertical-offset="3495">
+                <state vertical-scroll-proportion="-7.45098" vertical-offset="1960" max-vertical-offset="3495">
                   <caret line="156" column="32" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="67" />
                   <folding />
                 </state>
@@ -488,14 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2580">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/movie.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.2156863" vertical-offset="1075" max-vertical-offset="3825">
@@ -506,8 +498,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/movies.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33281735" vertical-offset="2125" max-vertical-offset="3495">
+        <state vertical-scroll-proportion="-7.45098" vertical-offset="1960" max-vertical-offset="3495">
           <caret line="156" column="32" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7771174" vertical-offset="1907" max-vertical-offset="2580">
+          <caret line="162" column="17" selection-start-line="157" selection-start-column="7" selection-end-line="162" selection-end-column="17" />
           <folding />
         </state>
       </provider>
