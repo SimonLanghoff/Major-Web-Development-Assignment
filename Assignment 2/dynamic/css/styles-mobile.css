@@ -96,12 +96,6 @@ figure.no-margin > img {
 /************************************/
 /*********** Home Page **************/
 /************************************/
-
-/* Use up all available space */
-#home-page {
-    width: 100%;
-}
-
 /* Show event-info in top right corner of the backdrop and
     align the headlines accordingly */
 .event-headline > h1 {
