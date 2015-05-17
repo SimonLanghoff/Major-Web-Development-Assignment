@@ -1,0 +1,122 @@
+@-webkit-keyframes 'fade-in' {
+   from {
+      opacity: 0.0;
+   }
+   to {
+      opacity: 1.0;
+   }
+}
+
+@-webkit-keyframes 'fade-out' {
+   from {
+      opacity: 1.0;
+   }
+   to {
+      opacity: 0.0;
+   }
+}
+
+@-webkit-keyframes 'rotate' {
+   from {
+      -webkit-transform: rotate(0deg);
+   }
+   to {
+      -webkit-transform: rotate(360deg);
+   }
+}
+
+#search-form {
+   width: 750px;
+   margin-top: 100px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#search-box {
+   border: none;
+   border-bottom: 1px solid #999;
+   width: 100%;
+   font-family: "Helvetica Neue", Arial, sans-serif;
+   color: #333333;
+   letter-spacing: -2px;
+   font-size: 40pt;
+   font-weight: bold;
+}
+
+#photo-and-controls-container {
+   width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
+   position: relative;
+}
+
+#photo-container {
+   width: 760px;
+   height: 760px;
+   overflow: hidden;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 100px;
+   margin-bottom: 100px;
+}
+
+#photo-container .photo {
+   width: 250px;
+   height: 250px;
+   margin-bottom: 5px;
+   float: left;
+   background-position: center center;
+   background-size: cover;
+}
+
+#photo-container .photo:not(:nth-child(3n)) {
+   margin-right: 5px;
+}
+
+.nav-button {
+   width: 60px;
+   height: 60px;
+   position: absolute;
+   top: 350px;
+   cursor: pointer;
+   opacity: 0;
+   visibility: hidden;
+}
+
+.nav-left {
+   left: 15px;
+   background-image: url('img/left_arrow.png');
+}
+
+.nav-right {
+   right: 15px;
+   background-image: url('img/right_arrow.png');
+}
+
+#loading-bar {
+   position: absolute;
+   width: 100px;
+   height: 20px;
+   background-color: #333333;
+   left: 450px;
+   top: 370px;
+   -webkit-animation-name: 'rotate';
+   -webkit-animation-duration: 2.0s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+   visibility: hidden;
+}
+
+.fade-in {
+   -webkit-animation-name: 'fade-in';
+   -webkit-animation-direction: normal;
+   -webkit-animation-duration: 0.5s;
+   -webkit-animation-fill-mode: forwards;
+}
+
+.fade-out {
+   -webkit-animation-name: 'fade-out';
+   -webkit-animation-direction: normal;
+   -webkit-animation-duration: 0.5s;
+   -webkit-animation-fill-mode: forwards;
+}

@@ -1,0 +1,36 @@
+body{
+	background-color: #DEDDD7;
+	font-family: "Helvetica", Arial, sans-serif;
+	color: #666666;
+}
+
+#container {
+	position:relative;
+	width: 965px;
+	height: 540px;
+	margin: 100px auto 0 auto;
+}
+
+#container canvas{
+	position: absolute;
+	left: 510px;
+	top: 0;
+}
+
+#chequerboard{
+	position: absolute;
+	top: 103px;
+	left: 59px;
+	width: 245px;
+	height: 245px;
+}
+
+.chequerboard-tile{
+	width: 45px;
+	height: 45px;
+	position: absolute;
+}
+
+.draggable{
+	cursor: move;
+}
