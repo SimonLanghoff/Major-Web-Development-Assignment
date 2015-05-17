@@ -2,12 +2,17 @@
 $(document).ready(function() {
     nextPosX = 10;
     nextPosY = 10;
+    nextPhotoBookId = 1;
+    nextPhotoId = 0;
 
-    initCanvas();
+    //initCanvas();
 
     // Override search event
     $('#search-form').submit(function(e) {
         console.log('form submitted');
+
+        // Clear all previous search results
+
 
         // Stop page-reload
         e.preventDefault();
@@ -20,6 +25,22 @@ $(document).ready(function() {
 
         loadPhotos(searchTerms);
     });
+
+    // Override Save button click
+    $('#btn-save-book').click(function(e) {
+        console.log('Saving Book');
+        savePhotoBook();
+    });
+
+    // Override Delete button click
+    $('#btn-delete-book').click(function(e) {
+        console.log('Deleting Book');
+        deletePhotoBooks();
+    });
+
+    loadPhotoBook(1);
+    // Add handlers so images can be removed from the book without getting images from flickr.
+    addDragDropHandlers();
 });
 
 /********* Draggable implementation *********/
@@ -28,12 +49,9 @@ var draggedElement = null
 // Add dragevent
 function handleDragStart(e) {
     // Do stuff with source node for drag
-
     draggedElement = this;
 
-    this.style.opacity = '0.4';
     e.dataTransfer.effectAllowed = 'move';
-    console.log(this);
     e.dataTransfer.setData('text/html', this);
 
 }
@@ -52,32 +70,68 @@ function handleDragOver(e) {
 function handleDragEnter(e) {
     // e is the target
     this.classList.add('over');
+    this.classList.add('hover');
+
+    $('#photo-container').addClass('hover');
+}
+
+function handleDragEnterBook(e){
+    // e is the target
+    this.classList.add('over');
+
+    $('#photo-book-container').addClass('hover');
 }
 
 function handleDragLeave(e) {
     // e is the target
-    this.classList.remove('over');
+    $('.over').removeClass('over');
+
+    $('.hover').removeClass("hover");
 }
 
-function handleDrop(e) {
+function handleDropBook(e) {
+    console.log('Dropping on book');
     // e is the target element.
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
 
+    $('#photo-book-container').removeClass('hover');
+
     if(draggedElement != this) {
-        // Don't do anything if dropping element on same element (this = target)
+        //Don't do anything if dropping element on same element (this = target)
         console.log(e);
-        var targetElement = this;
-        draggedElement = targetElement;
+        //var targetElement = this;
+        //draggedElement = targetElement;
+        targetElement = e.dataTransfer.getData('text/html');
+
+        addPhotoToBook(draggedElement);
+
+
+    }
+
+    return false;
+}
+
+function handleDrop(e) {
+    // e is the target element.
+    console.log('Dropping on stuff');
+
+    $('.hover').removeClass('hover');
+    if (e.stopPropagation) {
+        e.stopPropagation(); // stops the browser from redirecting.
+    }
+
+    if(draggedElement != this) {
+        //Don't do anything if dropping element on same element (this = target)
+        console.log(e);
+        //var targetElement = this;
+        //draggedElement = targetElement;
         targetElement = e.dataTransfer.getData('text/html');
 
         console.log('target' + targetElement);
 
-        // Get the background image url.
-        var bgUrl = $(draggedElement).css('background-image');
-        bgUrl = bgUrl.replace('url(','').replace(')','');
-        addImageToCanvas(bgUrl);
+        addPhotoToContainer(draggedElement);
     }
 
     return false;
@@ -95,53 +149,24 @@ function handleDragEnd(e) {
 function addDragDropHandlers(){
     // Select all photos and add drag 'n drop event handlers.
     console.log("Adding Handlers");
-    $('.photo').each(function(i, photo) {
-        console.log("adding handlers to : ");
-        console.log(photo);
+    $('.photo').parent().each(function(i, photo) {
         photo.addEventListener('dragstart', handleDragStart, false);
         photo.addEventListener('dragenter', handleDragEnter, false);
         photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
         photo.addEventListener('dragleave', handleDragLeave, false);
-        photo.addEventListener('drop', handleDrop, false);
+
         photo.addEventListener('dragend', handleDragEnd, false);
     });
 
+    $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnterBook, false);
+    $('#photo-book-container').get(0).addEventListener('drop', handleDropBook, false);
 
-    //var photos = document.getElementsByClassName("photo");
-    ////var photos = document.querySelectorAll('.photo');
-    //console.log("photos: ");
-    //console.log(photos);
-    //photos.each(function(photo) {
-    //    console.log("photo");
-    //    console.log(photo)
-    //    photo.addEventListener('dragstart', handleDragStart, false);
-    //    photo.addEventListener('dragenter', handleDragEnter, false);
-    //    photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
-    //    photo.addEventListener('dragleave', handleDragLeave, false);
-    //    photo.addEventListener('drop', handleDrop, false);
-    //    photo.addEventListener('dragend', handleDragEnd, false);
-    //});
-    //[].forEach.call(photos, function(photo) {
-    //    console.log("photo");
-    //    console.log(photo)
-    //    photo.addEventListener('dragstart', handleDragStart, false);
-    //    photo.addEventListener('dragenter', handleDragEnter, false);
-    //    photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
-    //    photo.addEventListener('dragleave', handleDragLeave, false);
-    //    photo.addEventListener('drop', handleDrop, false);
-    //    photo.addEventListener('dragend', handleDragEnd, false);
-    //});
 }
 
 
 
 
 function loadPhotos(terms){
-    console.log(terms);
-    //for (var i = 0; i < 9; i++) {
-    //    $('<div />').attr('id', 'photo-' + i).addClass('photo').attr('draggable', 'true').appendTo('#photo-container').wrap('<figure></figure>');
-    //}
-
     // TODO: Get current page of "book"
     //$.getJSON('https://api.flickr.com/services/rest/?jsoncallback=?', {
     //    'method' : 'flickr.galleries.getPhotos',
@@ -164,23 +189,23 @@ function loadPhotos(terms){
     }, function(data) {
         // jQuery loop
         $.each(data.photos.photo, function(i, photo) {
-
             // Add a div for each photo and make them draggable.
-            $('<div />').attr('id', 'photo-' + i).addClass('photo').attr('draggable', 'true').appendTo('#photo-container').wrap('<figure></figure>');
-
+            $('<div />').attr('id', 'photo-' + nextPhotoId).addClass('photo').attr('draggable', 'true').appendTo('#photo-container').wrap('<figure></figure>');
 
             var imgURL = 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg';
 
             // Pre-cache image see http://perishablepress.com/a-way-to-preload-images-without-javascript-that-is-so-much-better/
-            $('<img />').attr({'src': imgURL, 'data-image-num': i}).load(function() {
+            $('<img />').attr({'src': imgURL, 'data-image-num': nextPhotoId}).load(function() {
                 var imageDataNum = $(this).attr('data-image-num');
                 $('#photo-' + imageDataNum).css('background-image', 'url(' + imgURL + ')').removeClass('fade-out').addClass('fade-in');
 
             });
 
             // Get the parent figure element and append the figcaption
-            var parentFigure = $('#photo-' + i).parent();
+            var parentFigure = $('#photo-' + nextPhotoId).parent();
             $('<figcaption>' + photo.title.substring(0, 55) + '</figcaption>').appendTo(parentFigure);
+
+            nextPhotoId = nextPhotoId + 1;
 
         });
 
@@ -206,37 +231,67 @@ function initCanvas(){
     //    img.src = "img/open-book.gif";
     //
     //};
-
-
 }
 
-function addImageToCanvas(imgSource){
-    console.log("ADDING IMAGE TO CANVAS");
-    console.log("IMG Source = " + imgSource);
+function addPhotoToBook(photoElement){
+    console.log("ADDING IMAGE TO BOOK");
+    console.log("IMG Source = " + photoElement);
     console.log("Next X = " + nextPosX);
     console.log("Next Y = " + nextPosY);
 
-    var canvas = $('#photo-book').get(0);
-    var ctx = canvas.getContext("2d");
-    console.log(canvas);
+    var book = $('#photo-book-container').get(0);
 
-    if(nextPosX > canvas.width / 2) {
+    console.log(photoElement);
+
+    if(nextPosX > book.offsetWidth / 2) {
         // Reset PosX and increment Y so pictures are added on the next line.
         nextPosX = 10;
         nextPosY = nextPosY + 100; //TODO: Update with image height
     }
 
-    // Draw the image
-    var img = new Image();
-    img.onload = function(){
-        console.log(img);
-        ctx.drawImage(img, 0, 0, 250, 100);
-    };
-    img.src = imgSource;
+    $(photoElement).attr("id", "book-photo-" + nextPhotoBookId);
+    $(photoElement).addClass("in-book");
+
+    $(photoElement).children().removeAttr('id');
+
+    $(book).append(photoElement);
+
+
+    nextPhotoBookId = nextPhotoBookId + 1;
+
 
     console.log("Next X after = " + nextPosX);
     console.log("Next Y after = " + nextPosY);
-    console.log("ADDED IMAGE TO CANVAS");
+    console.log("ADDED IMAGE TO BOOK");
 
+}
+
+function addPhotoToContainer(photoElement){
+    console.log("ADDING IMAGE TO Container");
+    console.log("IMG Source = " + photoElement);
+
+    var container = $('#photo-container').get(0);
+
+    $(photoElement).child().attr("id", "photo-" + nextPhotoId);
+
+    $(photoElement).removeClass("in-book");
+    $(photoElement).removeAttr('id');
+
+    $(container).append(photoElement);
+
+    nextPhotoId = nextPhotoId + 1;
+
+}
+
+function savePhotoBook(){
+    localStorage.setItem('photo-book-' + (localStorage.length + 1), $('#photo-book-container').html());
+}
+
+function deletePhotoBooks(){
+    localStorage.clear();
+}
+
+function loadPhotoBook(id){
+    $('#photo-book-container').append(localStorage.getItem('photo-book-' + id));
 }
 

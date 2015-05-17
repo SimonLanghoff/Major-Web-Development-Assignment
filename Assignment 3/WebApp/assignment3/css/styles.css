@@ -25,31 +25,12 @@ canvas {
     background-color:rgba(0,0,0,0.5);
 }
 
-#photo-container .photo {
-    width: 100%;
-    height: calc(100% - 40px);;
-    margin-bottom: 5px;
-    background-position: center center;
-    background-size: cover;
-    cursor: move;
-
-    padding:5px 10px;
-    /*setting a width and adding overflow:hidden will clear the floats we're going to apply to figure*/
-    overflow:hidden;
-
-}
-
-/* Provide visual feedback when dragging images */
-.photo.over {
-
-}
-
-#photo-container figure{
+#content figure {
     display: inline-block;
-    margin: 25px 4%;
-    width: 25%;
+    position: relative; /* Need to be relative to position "tape" correctly*/
+    margin: 25px 2%;
+    width: 15%;
     height: 275px;
-
 
     padding: 6px 8px 10px 8px;
     background: #eee6d8; /*fallback colour for browsers that don't support gradients*/
@@ -63,6 +44,72 @@ canvas {
     -webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
     -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
     box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+}
+
+
+#content .photo {
+    width: 100%;
+    height: calc(100% - 40px);;
+    margin-bottom: 5px;
+    background-position: center center;
+    background-size: cover;
+    cursor: move;
+    position: relative;
+
+    padding:5px 10px;
+    /*setting a width and adding overflow:hidden will clear the floats we're going to apply to figure*/
+    overflow:hidden;
+}
+
+
+#photo-book-container {
+    height: 500px;
+}
+
+#photo-book-container figure:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left:-10px; /*postion from the left side of the frame (positive value move the tape right, negative moves it left)*/
+    top: -15px; /*position from the top of the frame (positive move it above the frame, negative below)*/
+    width: 125px; /*width of the tape*/
+    height: 25px; /*height of the tape*/
+    background-color: rgba(222,220,198,0.8); /*colour of the tape, use rgba to make it slightly transparent*/
+    z-index: 1; /* Keep it on top */
+    /*rotate the tape 12 degrees anti-clockwise*/
+    -webkit-transform: rotate(-12deg);
+    -moz-transform: rotate(-12deg);
+    -o-transform: rotate(-12deg);
+    -ms-transform: rotate(-12deg);
+}
+
+/** Rotate tape **/
+#photo-book-container figure:nth-child(even):before {
+    left:150px;
+    top: -15px;
+    width: 125px;
+    height: 25px;
+    -webkit-transform: rotate(12deg);
+    -moz-transform: rotate(12deg);
+    -o-transform: rotate(12deg);
+    -ms-transform: rotate(12deg);
+}
+
+.hover {
+    background-color: gray;
+    margin:50px 50px;
+
+    -webkit-box-shadow:0 0 20px yellow;
+    -moz-box-shadow: 0 0 20px yellow;
+    box-shadow:0 0 20px yellow;
+}
+
+
+
+
+/* Provide visual feedback when dragging images */
+.photo.over {
+    opacity: 0.4;
 }
 
 

@@ -34,8 +34,11 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search Flickr">
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-success" type="submit">Submit</button>
                     </form>
+
+                    <button id="btn-delete-book" class="btn btn-primary navbar-btn navbar-collapse navbar-right">Delete Photo-Book</button>
+                    <button id="btn-save-book" class="btn btn-danger navbar-btn navbar-collapse navbar-right">Save Photo-Book</button>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
@@ -44,16 +47,13 @@
     <div id="content" class="container-fluid">
 
         <div id="photo-book-container">
-
-
-
-            <canvas id="photo-book" width="90%" height="500px">
-
-            </canvas>
+            <!-- Images will automatically be added here as the users drags and drops. -->
+            <!--<canvas id="photo-book" width="90%" height="500px">-->
+            <!--</canvas>-->
         </div>
 
         <div id="photo-container">
-
+            <!-- Images will be added here when the users searches flickr.-->
         </div>
     </div>
 
