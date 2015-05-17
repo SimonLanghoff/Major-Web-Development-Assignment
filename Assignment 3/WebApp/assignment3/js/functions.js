@@ -45,11 +45,18 @@ $(document).ready(function() {
 
 /********* Draggable implementation *********/
 var draggedElement = null
+var draggedParent = null;
 
 // Add dragevent
 function handleDragStart(e) {
     // Do stuff with source node for drag
-    draggedElement = this;
+    draggedElement = $(this);
+    draggedParent = $(this).parent();
+
+    console.log('drag started');
+    console.log($(draggedElement).attr('id'));
+    console.log($(draggedParent).attr('id'));
+
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this);
@@ -59,79 +66,65 @@ function handleDragStart(e) {
 function handleDragOver(e) {
     // e is the target
     if (e.preventDefault) {
-        e.preventDefault(); // Necessary. Allows us to drop.
+        e.preventDefault(); // Necessary. Allows drop.
     }
 
-    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.effectAllowed = 'move'; // Necessary. Allows drop.
 
     return false;
 }
 
 function handleDragEnter(e) {
     // e is the target
-    this.classList.add('over');
-    this.classList.add('hover');
+    //if($(draggedElement).attr('id') === $(draggedParent).attr('id')){
+    //    console.log('test');
+    //} else {
+    //    console.log($(draggedElement).attr('id'));
+    //    console.log($(draggedParent).attr('id'));
+    //    $(this).addClass('over');
+    //    $(this).addClass('hover');
+    //}
 
-    $('#photo-container').addClass('hover');
-}
+    $(this).addClass('over');
+    $(this).addClass('hover');
 
-function handleDragEnterBook(e){
-    // e is the target
-    this.classList.add('over');
-
-    $('#photo-book-container').addClass('hover');
 }
 
 function handleDragLeave(e) {
     // e is the target
-    $('.over').removeClass('over');
+    $(this).removeClass('over')
+    $(this).removeClass('hover')
 
-    $('.hover').removeClass("hover");
-}
-
-function handleDropBook(e) {
-    console.log('Dropping on book');
-    // e is the target element.
-    if (e.stopPropagation) {
-        e.stopPropagation(); // stops the browser from redirecting.
-    }
-
-    $('#photo-book-container').removeClass('hover');
-
-    if(draggedElement != this) {
-        //Don't do anything if dropping element on same element (this = target)
-        console.log(e);
-        //var targetElement = this;
-        //draggedElement = targetElement;
-        targetElement = e.dataTransfer.getData('text/html');
-
-        addPhotoToBook(draggedElement);
-
-
-    }
-
-    return false;
 }
 
 function handleDrop(e) {
-    // e is the target element.
-    console.log('Dropping on stuff');
+    console.log('Dropping');
 
-    $('.hover').removeClass('hover');
+    console.log($(this).attr('id'));
+    // e is the target element.
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
 
+    //$('#photo-book-container').removeClass('over');
+    //$('#photo-book-container').removeClass('hover');
+    $('.over').removeClass('over');
+    $('.hover').removeClass('hover');
+
+
+
     if(draggedElement != this) {
         //Don't do anything if dropping element on same element (this = target)
-        console.log(e);
-        //var targetElement = this;
-        //draggedElement = targetElement;
+        // Swap
         targetElement = e.dataTransfer.getData('text/html');
 
-        console.log('target' + targetElement);
+        if($(this).attr('id') === 'photo-book-container'){
+            console.log('Dropping on book');
+            addPhotoToBook(draggedElement);
+        } else if($(this).attr('id') === 'photo-container') {
+            console.log('Dropping on container');
 
-        addPhotoToContainer(draggedElement);
+        }
     }
 
     return false;
@@ -139,11 +132,8 @@ function handleDrop(e) {
 
 function handleDragEnd(e) {
     // e is the source element of the drag.
-    var photos = document.querySelectorAll('.photo');
-
-    [].forEach.call(photos, function (photo) {
-        photo.classList.remove('over');
-    });
+    $('.over').removeClass('over');
+    $('.hover').removeClass('hover');
 }
 
 function addDragDropHandlers(){
@@ -154,12 +144,14 @@ function addDragDropHandlers(){
         photo.addEventListener('dragenter', handleDragEnter, false);
         photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
         photo.addEventListener('dragleave', handleDragLeave, false);
-
+        photo.addEventListener('drop', handleDrop, false);
         photo.addEventListener('dragend', handleDragEnd, false);
     });
 
-    $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnterBook, false);
-    $('#photo-book-container').get(0).addEventListener('drop', handleDropBook, false);
+    $('#photo-book-container').get(0).addEventListener('dragover', handleDragOver, false);
+    $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
+    $('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
+
 
 }
 
@@ -234,10 +226,10 @@ function initCanvas(){
 }
 
 function addPhotoToBook(photoElement){
-    console.log("ADDING IMAGE TO BOOK");
-    console.log("IMG Source = " + photoElement);
-    console.log("Next X = " + nextPosX);
-    console.log("Next Y = " + nextPosY);
+    //console.log("ADDING IMAGE TO BOOK");
+    //console.log("IMG Source = " + photoElement);
+    //console.log("Next X = " + nextPosX);
+    //console.log("Next Y = " + nextPosY);
 
     var book = $('#photo-book-container').get(0);
 
@@ -259,10 +251,10 @@ function addPhotoToBook(photoElement){
 
     nextPhotoBookId = nextPhotoBookId + 1;
 
-
-    console.log("Next X after = " + nextPosX);
-    console.log("Next Y after = " + nextPosY);
-    console.log("ADDED IMAGE TO BOOK");
+    //
+    //console.log("Next X after = " + nextPosX);
+    //console.log("Next Y after = " + nextPosY);
+    //console.log("ADDED IMAGE TO BOOK");
 
 }
 
