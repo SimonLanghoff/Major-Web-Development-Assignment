@@ -49,6 +49,7 @@ var draggedParent = null;
 
 // Add dragevent
 function handleDragStart(e) {
+    console.log('dragstart');
     // Do stuff with source node for drag
     draggedElement = $(this);
     draggedParent = $(this).parent();
@@ -64,6 +65,7 @@ function handleDragStart(e) {
 }
 
 function handleDragOver(e) {
+    console.log('dragover');
     // e is the target
     if (e.preventDefault) {
         e.preventDefault(); // Necessary. Allows drop.
@@ -75,6 +77,7 @@ function handleDragOver(e) {
 }
 
 function handleDragEnter(e) {
+    console.log('dragenter');
     // e is the target
     //if($(draggedElement).attr('id') === $(draggedParent).attr('id')){
     //    console.log('test');
@@ -91,9 +94,21 @@ function handleDragEnter(e) {
 }
 
 function handleDragLeave(e) {
+    console.log('dragleave');
+    console.log($(this).attr('id'));
     // e is the target
-    $(this).removeClass('over')
-    $(this).removeClass('hover')
+    // Only remove the class if we are outside the book or photo containers.
+
+    if($(this).attr('id') === 'photo-book-container') {
+
+    } else if($(this).attr('id') == 'photo-container') {
+
+    } else {
+        $('.over').removeClass('over')
+        $('hover').removeClass('hover')
+    }
+
+
 
 }
 
@@ -115,15 +130,12 @@ function handleDrop(e) {
 
     if(draggedElement != this) {
         //Don't do anything if dropping element on same element (this = target)
-        // Swap
-        targetElement = e.dataTransfer.getData('text/html');
-
         if($(this).attr('id') === 'photo-book-container'){
             console.log('Dropping on book');
             addPhotoToBook(draggedElement);
         } else if($(this).attr('id') === 'photo-container') {
             console.log('Dropping on container');
-
+            addPhotoToContainer(draggedElement);
         }
     }
 
@@ -131,6 +143,7 @@ function handleDrop(e) {
 }
 
 function handleDragEnd(e) {
+    console.log('dragend');
     // e is the source element of the drag.
     $('.over').removeClass('over');
     $('.hover').removeClass('hover');
@@ -141,16 +154,29 @@ function addDragDropHandlers(){
     console.log("Adding Handlers");
     $('.photo').parent().each(function(i, photo) {
         photo.addEventListener('dragstart', handleDragStart, false);
-        photo.addEventListener('dragenter', handleDragEnter, false);
-        photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
-        photo.addEventListener('dragleave', handleDragLeave, false);
-        photo.addEventListener('drop', handleDrop, false);
-        photo.addEventListener('dragend', handleDragEnd, false);
+        //photo.addEventListener('dragenter', handleDragEnter, false);
+        //photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
+        //photo.addEventListener('dragleave', handleDragLeave, false);
+        //photo.addEventListener('drop', handleDrop, false);
+        //photo.addEventListener('dragend', handleDragEnd, false);
     });
+
+
+    $('#photo-container').get(0).addEventListener('dragover', handleDragOver, false);
+    $('#photo-container').get(0).addEventListener('dragenter', handleDragEnter, false);
+    $('#photo-container').get(0).addEventListener('drop', handleDrop, false);
+    $('#photo-container').get(0).addEventListener('dragleave', handleDragLeave, false);
+    $('#photo-container').get(0).addEventListener('dragend', handleDragEnd, false);
+
+
+    //$('#content').get(0).addEventListener('dragenter', handleDragEnter, false);
+
 
     $('#photo-book-container').get(0).addEventListener('dragover', handleDragOver, false);
     $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
     $('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
+    $('#photo-book-container').get(0).addEventListener('dragleave', handleDragLeave, false);
+
 
 
 }
@@ -264,10 +290,12 @@ function addPhotoToContainer(photoElement){
 
     var container = $('#photo-container').get(0);
 
-    $(photoElement).child().attr("id", "photo-" + nextPhotoId);
+    $(photoElement).children('div').attr('id', "photo-" + nextPhotoId);
 
     $(photoElement).removeClass("in-book");
     $(photoElement).removeAttr('id');
+
+    $(photoElement).remove();
 
     $(container).append(photoElement);
 

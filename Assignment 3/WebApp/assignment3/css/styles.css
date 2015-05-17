@@ -134,3 +134,16 @@ canvas {
     -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
     box-shadow: -4px 4px 8px -4px rgba(0, 0, 0, .75);
 }
+
+/*#test {*/
+    /*position: absolute;*/
+    /*top: 64px;*/
+    /*left: 554px;*/
+    /*overflow: hidden;*/
+    /*z-index: 125;*/
+    /*width: 465px;*/
+    /*height: 465px;*/
+    /*-webkit-transform-origin: 0% 0%;*/
+    /*-webkit-transform: translate3d(0px, 0px, 0px) rotate(49.90581454908315deg);*/
+    /*display: block;*/
+/*}*/
