@@ -4,8 +4,20 @@ $(document).ready(function() {
     nextPosY = 10;
     nextPhotoBookId = 1;
     nextPhotoId = 0;
+    currentBookId = 1;
 
     //initCanvas();
+
+    // populate list with books in storage
+    getAllBooksInStorage();
+
+    // override book list dropdown link event
+    $('#dropdown-book-list').children('li').click(function() {
+        console.log('clicked on saved book');
+        loadPhotoBook($(this).children('a').text());
+    });
+
+
 
     // Override search event
     $('#search-form').submit(function(e) {
@@ -35,10 +47,12 @@ $(document).ready(function() {
     // Override Delete button click
     $('#btn-delete-book').click(function(e) {
         console.log('Deleting Book');
-        deletePhotoBooks();
+        deletePhotoBook(currentBookId);
+
+        localStorage.clear();
     });
 
-    loadPhotoBook(1);
+    loadPhotoBook(0);
     // Add handlers so images can be removed from the book without getting images from flickr.
     addDragDropHandlers();
 });
@@ -304,14 +318,25 @@ function addPhotoToContainer(photoElement){
 }
 
 function savePhotoBook(){
-    localStorage.setItem('photo-book-' + (localStorage.length + 1), $('#photo-book-container').html());
+    localStorage.setItem('photo-book-' + (currentBookId), $('#photo-book-container').html());
 }
 
-function deletePhotoBooks(){
-    localStorage.clear();
+function deletePhotoBook(id){
+    localStorage.removeItem('photo-book-' + id);
 }
 
 function loadPhotoBook(id){
-    $('#photo-book-container').append(localStorage.getItem('photo-book-' + id));
+    // Remove the currently displayed book and then add the one requested.
+    $('#photo-book-container').children().remove();
+    $('#photo-book-container').append(localStorage.getItem(id));
+}
+
+function getAllBooksInStorage(){
+    for (var i = 0; i < localStorage.length; i++){
+        key = localStorage.key(i);
+        console.log(localStorage.getItem(localStorage.key(i)));
+
+        $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
+    }
 }
 

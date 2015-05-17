@@ -10,7 +10,6 @@
 
     <!-- Override bootstrap css -->
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-
 </head>
 
 <body>
@@ -37,8 +36,19 @@
                         <button class="btn btn-success" type="submit">Submit</button>
                     </form>
 
-                    <button id="btn-delete-book" class="btn btn-primary navbar-btn navbar-collapse navbar-right">Delete Photo-Book</button>
-                    <button id="btn-save-book" class="btn btn-danger navbar-btn navbar-collapse navbar-right">Save Photo-Book</button>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <button id="btn-delete-book" class="btn btn-danger navbar-btn navbar-collapse">Delete Photo-Book</button>
+                        <button id="btn-save-book" class="btn btn-primary navbar-btn navbar-collapse">Save Photo-Book</button>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul id="dropdown-book-list" class="dropdown-menu" role="menu">
+                                <!-- List of saved books will automatically be populated here -->
+                                <!--<li><a href="#">Action</a></li>-->
+                            </ul>
+                        </li>
+                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
@@ -48,8 +58,6 @@
 
         <div id="photo-book-container">
             <!-- Images will automatically be added here as the users drags and drops. -->
-            <!--<canvas id="photo-book" width="90%" height="500px">-->
-            <!--</canvas>-->
         </div>
 
         <div id="photo-container">
