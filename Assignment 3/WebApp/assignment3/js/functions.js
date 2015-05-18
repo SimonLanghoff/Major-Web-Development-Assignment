@@ -39,7 +39,7 @@ $(document).ready(function() {
         loadPhotos(searchTerms);
     });
 
-    // Override Save button click
+    // Override create button click
     $('#btn-create-book').click(function(e) {
         console.log('Creating Book');
         createNewPhotoBook();
@@ -284,8 +284,6 @@ function addPhotoToContainer(photoElement){
 }
 
 function savePhotoBook(){
-    var key = createNewPhotoBook();
-
     //localStorage.setItem(key, $('#photo-book-container').html());
     localStorage.setItem(key, $('#pages').html());
 
@@ -300,8 +298,9 @@ function clearCurrentPhotoBook(){
     // Get all the children of the div element and remove it
     //$('#pages').children('section').children('div').children().remove();
     $('#pages').children().remove();
+    //$('#pages').find('figure').remove(); // This will remove all sections, script might not work.
 
-    // TODO: Update canvas?
+    // TODO: instead use find and remove all figures, but then I need to redo the load approach.
 }
 
 function deletePhotoBook(id){
@@ -368,7 +367,16 @@ function createNewPhotoBook(){
 
     updateBookList();
 
-    //addPagesToBook(5);
+    addPagesToBook(5);
+
+    // Clear the previous running script
+    clearInterval($('photo-book').attr('interval-id'));
+
+    // Add the rendering process to the newly added pages.
+    // This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
+    $.getScript("js/pageflip.js", function(){
+        console.log('running script again');
+    });
 
     // Return the generated id for reference.
     return key;

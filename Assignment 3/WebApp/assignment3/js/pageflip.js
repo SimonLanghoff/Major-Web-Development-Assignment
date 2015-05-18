@@ -54,7 +54,7 @@
 	canvas.style.left = -CANVAS_PADDING + "px";
 
 	// Render the page flip 60 times a second
-	setInterval( render, 1000 / 60 );
+	$('#photo-book').attr("interval-id", setInterval( render, 1000 / 60 ));
 
 	book.addEventListener( "mousemove", mouseMoveHandler, false );
 	book.addEventListener( "mousedown", mouseDownHandler, false );
