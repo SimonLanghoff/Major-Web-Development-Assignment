@@ -1,15 +1,4 @@
-
-
 (function() {
-
-	//// Dimensions of the whole book
-	//var BOOK_WIDTH = 830;
-	//var BOOK_HEIGHT = 260;
-    //
-	//// Dimensions of one page in the book
-	//var PAGE_WIDTH = 400;
-	//var PAGE_HEIGHT = 250;
-
     // Dimensions of the whole book
     var BOOK_WIDTH = 1800;
     var BOOK_HEIGHT = 700;
@@ -67,10 +56,6 @@
 	// Render the page flip 60 times a second
 	setInterval( render, 1000 / 60 );
 
-    function updateBook(){
-        console.log('updating book internals');
-    }
-
 	book.addEventListener( "mousemove", mouseMoveHandler, false );
 	book.addEventListener( "mousedown", mouseDownHandler, false );
 	book.addEventListener( "mouseup", mouseUpHandler, false );
@@ -115,13 +100,12 @@
 
 			flips[i].dragging = false;
 
-            // Create attribute with current page count.
+            // Create attribute with current page number.
             $('#pages').attr('page', page);
 		}
 	}
 
 	function render() {
-
 		// Reset all pixels in the canvas
 		context.clearRect( 0, 0, canvas.width, canvas.height );
 
@@ -230,5 +214,3 @@
 	}
 
 })();
-
-

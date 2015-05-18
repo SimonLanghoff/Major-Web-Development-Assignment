@@ -5,7 +5,14 @@ $(document).ready(function() {
     nextBookPhotoId = 1;
     nextPhotoId = 0;
 
+    pageNumber = 1;
+
+    // init empty hashmap to store count for search term.
+    searchHistory = {};
+
     currentPhotoBookId = null;
+
+    createNewPhotoBook();
 
     // populate list with books in storage
     updateBookList();
@@ -17,9 +24,18 @@ $(document).ready(function() {
         // Stop page-reload
         e.preventDefault();
 
-        // Get input
         searchTerms = $('#search-form > div > input').val();
 
+        // Get input
+        if(searchTerms in searchHistory) {
+            // Increment count
+            searchHistory[searchTerms] = searchHistory[searchTerms] + 1;
+        } else {
+            // Create element with count = 1
+            searchHistory[searchTerms] = 1;
+        }
+
+        // Search flickr using the search terms in the search box
         loadPhotos(searchTerms);
     });
 
@@ -42,7 +58,7 @@ $(document).ready(function() {
         deletePhotoBook(currentPhotoBookId);
     });
 
-    loadPhotoBook(0);
+    //loadPhotoBook(0);
     // Add handlers so images can be removed from the book without getting images from flickr.
     addDragDropHandlers();
 });
@@ -174,7 +190,7 @@ function loadPhotos(terms){
         'method': 'flickr.photos.search',
         'api_key': 'a3fabd055784a302a7d61d6502b75e6d',
         'tags': searchTerms,
-        'page': '1', // TODO update page number. Make it browsable.
+        'page': searchHistory[searchTerms], // Get the current count for that specific search term.
         'per_page': '9',
         'format': 'json'
 
@@ -269,6 +285,7 @@ function addPhotoToContainer(photoElement){
 
 function savePhotoBook(){
     var key = createNewPhotoBook();
+
     //localStorage.setItem(key, $('#photo-book-container').html());
     localStorage.setItem(key, $('#pages').html());
 
@@ -281,9 +298,9 @@ function clearCurrentPhotoBook(){
     currentPhotoBookId = null;
     //$('#photo-book-container').children().remove();
     // Get all the children of the div element and remove it
-    $('#pages').children('section').children('div').children().remove();
-    //$('#pages').children('section').remove();
-
+    //$('#pages').children('section').children('div').children().remove();
+    //$('#pages').children().remove();
+    $('#pages').find('figure').remove();
     // TODO: Update canvas?
 }
 
@@ -331,11 +348,12 @@ function updateBookList(){
 }
 
 function createNewPhotoBook(){
-    // TODO: set new background (book).
-
-    if(currentPhotoBookId != null){
-        clearCurrentPhotoBook();
-    }
+    // Remove the one that is already on the page.
+    // TODO: need to rerun book script then or add correct attributes
+    clearCurrentPhotoBook();
+    //if(currentPhotoBookId != null){
+    //  clearCurrentPhotoBook();
+    //}
 
     // Create a unique id for the new book
     var key = 'photo-book-' + getRandomWholeNumber(0, 10000);
@@ -350,7 +368,7 @@ function createNewPhotoBook(){
 
     updateBookList();
 
-    addPageToBook(1);
+    //addPagesToBook(5);
 
     // Return the generated id for reference.
     return key;
@@ -365,7 +383,12 @@ function getPictureCountOnPage(pageNumber){
 }
 
 // Add an empty page
-function addPageToBook(pageNumber){
-    $('#pages').append('<section><div></div></section>');
+// Cannot get function to work, need to reapply script after removing section elements. so for now just doing the simple approach.
+function addPagesToBook(count){
+    for(i = 0; i < count; i++){
+        var zIndex = count - i;
+        console.log('Adding Page');
+        $('#pages').append("<section style=\"z-index: " +zIndex+ ";\"" +"><div></div></section>");
+    }
 }
 
