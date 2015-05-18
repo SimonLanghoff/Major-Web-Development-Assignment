@@ -112,6 +112,13 @@ header {
     opacity: 0.4;
 }
 
+/* Position container beneath book. */
+div#photo-container {
+    top: 900px;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+}
 
 /*** Rotate the uneven numbered images  anti-clockwise***/
 #photo-container figure{
@@ -138,34 +145,77 @@ header {
 /***** Photo Book Canvas Section ******/
 #photo-book {
     background: url("/assignment3/img/book.png") no-repeat;
-    background-size: contain;
+    background-size: 100% 100%;
     position: absolute;
     width: 1800px;
-    height: 560px;
-    left: 50%; /* We are only interested in rendering the right hand side. */
-    top: 30%;
+    height: 700px;
+    left: 40%; /* We are only interested in rendering the right hand side. */
+    top: 250px;
     margin-left: -1200px;
     margin-top: -125px;
 }
 
-/* Styling of every content page. */
+/* Styling of every content page.*/
 #pages section {
-    /*background: url("/assignment3/img/paper.png") no-repeat;*/
-    /*background-size: contain;*/
+    /* We need a page background image to visually separate the pages,
+     otherwise all content of the book will be shown no matter what page you are on */
+    background: url("/assignment3/img/paper.png") no-repeat;
+    background-size: 100% 100%;
+
     display: block;
-    width: 860px;
-    height: 540px;
-    position: absolute;
+    height: 670px;
     left: 50%;
-    top: 2%;
     overflow: hidden;
+    position: absolute;
+    top: 2%;
+    width: 860px;
 }
+
+/* Style the pictures added to the book */
+#pages section div figure {
+    width: 300px;
+    height: 300px;
+    position: absolute; /* We set their position in the book using JS. */
+}
+
+/* Add tape to images */
+#pages section div figure:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left:-10px; /*postion from the left side of the frame (positive value move the tape right, negative moves it left)*/
+    top: -15px; /*position from the top of the frame (positive move it above the frame, negative below)*/
+    width: 125px; /*width of the tape*/
+    height: 25px; /*height of the tape*/
+    background-color: rgba(222,220,198,0.8); /*colour of the tape, use rgba to make it slightly transparent*/
+    z-index: 1; /* Keep it on top */
+    /*rotate the tape 12 degrees anti-clockwise*/
+    -webkit-transform: rotate(-12deg);
+    -moz-transform: rotate(-12deg);
+    -o-transform: rotate(-12deg);
+    -ms-transform: rotate(-12deg);
+}
+
+/** Rotate tape **/
+#photo-book section div figure:nth-child(even):before {
+    left:150px;
+    top: -15px;
+    width: 125px;
+    height: 25px;
+    -webkit-transform: rotate(12deg);
+    -moz-transform: rotate(12deg);
+    -o-transform: rotate(12deg);
+    -ms-transform: rotate(12deg);
+}
+
+
 #pages section>div {
     display: block;
     width: 400px;
     height: 250px;
     font-size: 12px;
 }
+
 #pages section p,
 #pages section h2 {
     padding: 3px 35px;
@@ -180,17 +230,3 @@ header {
     position: absolute;
     z-index: 100;
 }
-
-
-/*#test {*/
-    /*position: absolute;*/
-    /*top: 64px;*/
-    /*left: 554px;*/
-    /*overflow: hidden;*/
-    /*z-index: 125;*/
-    /*width: 465px;*/
-    /*height: 465px;*/
-    /*-webkit-transform-origin: 0% 0%;*/
-    /*-webkit-transform: translate3d(0px, 0px, 0px) rotate(49.90581454908315deg);*/
-    /*display: block;*/
-/*}*/

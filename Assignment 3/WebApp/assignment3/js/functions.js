@@ -2,12 +2,12 @@
 $(document).ready(function() {
     nextPosX = 10;
     nextPosY = 10;
-    nextPhotoBookId = 1;
+    nextBookPhotoId = 1;
     nextPhotoId = 0;
 
     currentPhotoBookId = null;
 
-    //initCanvas();
+    currentPage = 0;
 
     // populate list with books in storage
     updateBookList();
@@ -58,15 +58,9 @@ var draggedParent = null;
 
 // Add dragevent
 function handleDragStart(e) {
-    console.log('dragstart');
     // Do stuff with source node for drag
     draggedElement = $(this);
     draggedParent = $(this).parent();
-
-    console.log('drag started');
-    console.log($(draggedElement).attr('id'));
-    console.log($(draggedParent).attr('id'));
-
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this);
@@ -74,7 +68,6 @@ function handleDragStart(e) {
 }
 
 function handleDragOver(e) {
-    console.log('dragover');
     // e is the target
     if (e.preventDefault) {
         e.preventDefault(); // Necessary. Allows drop.
@@ -86,17 +79,13 @@ function handleDragOver(e) {
 }
 
 function handleDragEnter(e) {
-    console.log('dragenter');
     // e is the target
-
     $(this).addClass('over');
     $(this).addClass('hover');
 
 }
 
 function handleDragLeave(e) {
-    console.log('dragleave');
-    console.log($(this).attr('id'));
     // e is the target
     // Only remove the class if we are outside the book or photo containers.
 
@@ -111,9 +100,6 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-    console.log('Dropping');
-
-    console.log($(this).attr('id'));
     // e is the target element.
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
@@ -128,7 +114,8 @@ function handleDrop(e) {
 
     if(draggedElement != this) {
         //Don't do anything if dropping element on same element (this = target)
-        if($(this).attr('id') === 'photo-book-container'){
+        //if($(this).attr('id') === 'photo-book-container'){
+        if($(this).attr('id') === 'photo-book'){
             console.log('Dropping on book');
             addPhotoToBook(draggedElement);
         } else if($(this).attr('id') === 'photo-container') {
@@ -141,7 +128,6 @@ function handleDrop(e) {
 }
 
 function handleDragEnd(e) {
-    console.log('dragend');
     // e is the source element of the drag.
     $('.over').removeClass('over');
     $('.hover').removeClass('hover');
@@ -166,14 +152,15 @@ function addDragDropHandlers(){
     $('#photo-container').get(0).addEventListener('dragleave', handleDragLeave, false);
     $('#photo-container').get(0).addEventListener('dragend', handleDragEnd, false);
 
+    //$('#photo-book-container').get(0).addEventListener('dragover', handleDragOver, false);
+    //$('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
+    //$('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
+    //$('#photo-book-container').get(0).addEventListener('dragleave', handleDragLeave, false);
 
-    //$('#content').get(0).addEventListener('dragenter', handleDragEnter, false);
-
-
-    $('#photo-book-container').get(0).addEventListener('dragover', handleDragOver, false);
-    $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
-    $('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
-    $('#photo-book-container').get(0).addEventListener('dragleave', handleDragLeave, false);
+    $('#photo-book').get(0).addEventListener('dragover', handleDragOver, false);
+    $('#photo-book').get(0).addEventListener('dragenter', handleDragEnter, false);
+    $('#photo-book').get(0).addEventListener('drop', handleDrop, false);
+    $('#photo-book').get(0).addEventListener('dragleave', handleDragLeave, false);
 }
 
 function loadPhotos(terms){
@@ -223,32 +210,16 @@ function loadPhotos(terms){
     });
 }
 
-function initCanvas(){
-    var canvas = document.getElementById("photo-book");
-    canvas.setAttribute('width', '500');
-
-    // DOn't do anything yet, later add background image
-    //window.onload = function() {
-    //    var c=document.getElementById("photo-book");
-    //    var ctx=c.getContext("2d");
-    //    var img = new Image();
-    //    img.onload = function(){
-    //        console.log(img);
-    //        ctx.drawImage(img, 0, 0);
-    //    };
-    //    img.src = "img/open-book.gif";
-    //
-    //};
-}
-
 function addPhotoToBook(photoElement){
     //console.log("ADDING IMAGE TO BOOK");
     //console.log("IMG Source = " + photoElement);
     //console.log("Next X = " + nextPosX);
     //console.log("Next Y = " + nextPosY);
 
-    var book = $('#photo-book-container').get(0);
+    //var book = $('#photo-book-container').get(0);
+    var book = $('#photo-book').get(0);
 
+    console.log('photo element: ');
     console.log(photoElement);
 
     if(nextPosX > book.offsetWidth / 2) {
@@ -257,15 +228,23 @@ function addPhotoToBook(photoElement){
         nextPosY = nextPosY + 100; //TODO: Update with image height
     }
 
-    $(photoElement).attr("id", "book-photo-" + nextPhotoBookId);
+    $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
     $(photoElement).addClass("in-book");
 
     $(photoElement).children().removeAttr('id');
 
-    $(book).append(photoElement);
+    // TODO: do this in the right section depending on the page we are on.
+    console.log($(book).children('section').children('div').append(photoElement));
+    //$(book).children('section').children('div').append(photoElement);
+
+    $(photoElement).remove(); // remove the photo from the origin container.
+
+    // Then add the element to the photo-book
+    console.log('page number: ' + pageNumber);
+    $('#pages').children().eq(pageNumber).children().append(photoElement);
 
 
-    nextPhotoBookId = nextPhotoBookId + 1;
+    nextBookPhotoId = nextBookPhotoId + 1;
 
     //
     //console.log("Next X after = " + nextPosX);
@@ -285,7 +264,7 @@ function addPhotoToContainer(photoElement){
     $(photoElement).removeClass("in-book");
     $(photoElement).removeAttr('id');
 
-    $(photoElement).remove();
+    $(photoElement).remove(); // remove the photo from the origin container.
 
     $(container).append(photoElement);
 
@@ -295,7 +274,8 @@ function addPhotoToContainer(photoElement){
 
 function savePhotoBook(){
     var key = createNewPhotoBook();
-    localStorage.setItem(key, $('#photo-book-container').html());
+    //localStorage.setItem(key, $('#photo-book-container').html());
+    localStorage.setItem(key, $('#pages').html());
 
     // Update listings of saved books.
     updateBookList();
@@ -304,7 +284,12 @@ function savePhotoBook(){
 // Simply clears the photo container of any items.
 function clearCurrentPhotoBook(){
     currentPhotoBookId = null;
-    $('#photo-book-container').children().remove();
+    //$('#photo-book-container').children().remove();
+    // Get all the children of the div element and remove it
+    $('#pages').children('section').children('div').children().remove();
+    //$('#pages').children('section').remove();
+
+    // TODO: Update canvas?
 }
 
 function deletePhotoBook(id){
@@ -321,7 +306,8 @@ function deletePhotoBook(id){
 function loadPhotoBook(id){
     // Remove the currently displayed book and then add the one requested.
     clearCurrentPhotoBook();
-    $('#photo-book-container').append(localStorage.getItem(id));
+    //$('#photo-book-container').append(localStorage.getItem(id));
+    $('#pages').append(localStorage.getItem(id));
 
     currentPhotoBookId = id;
 }
@@ -364,7 +350,12 @@ function createNewPhotoBook(){
         key = 'photo-book-' + getRandomWholeNumber(0, 10000);
     }
 
-    localStorage.setItem(key, $('#photo-book-container').html());
+    //localStorage.setItem(key, $('#photo-book-container').html());
+    localStorage.setItem(key, $('#pages').html());
+
+    updateBookList();
+
+    addPageToBook(1);
 
     // Return the generated id for reference.
     return key;
@@ -372,5 +363,14 @@ function createNewPhotoBook(){
 
 function getRandomWholeNumber(min, max) {
     return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+function getPictureCountOnPage(pageNumber){
+    return count = $('#pages').children().eq(pageNumber).children().length;
+}
+
+// Add an empty page
+function addPageToBook(pageNumber){
+    $('#pages').append('<section><div></div></section>');
 }
 

@@ -1,7 +1,7 @@
 
 
 (function() {
-	
+
 	//// Dimensions of the whole book
 	//var BOOK_WIDTH = 830;
 	//var BOOK_HEIGHT = 260;
@@ -12,19 +12,19 @@
 
     // Dimensions of the whole book
     var BOOK_WIDTH = 1800;
-    var BOOK_HEIGHT = 560;
+    var BOOK_HEIGHT = 700;
 
     // Dimensions of one page in the book
     var PAGE_WIDTH = 860;
-    var PAGE_HEIGHT = 540;
+    var PAGE_HEIGHT = 670;
 
 
 
     // Vertical spacing between the top edge of the book and the papers
 	var PAGE_Y = ( BOOK_HEIGHT - PAGE_HEIGHT ) / 2;
 
-	// The canvas size equals to the book dimensions + this padding
-	var CANVAS_PADDING = 60;
+	// We need to add padding to our canvas such that the flip animation is not cropped.
+	var CANVAS_PADDING = 40;
 
 	var page = 0;
 
@@ -66,6 +66,10 @@
 
 	// Render the page flip 60 times a second
 	setInterval( render, 1000 / 60 );
+
+    function updateBook(){
+        console.log('updating book internals');
+    }
 
 	book.addEventListener( "mousemove", mouseMoveHandler, false );
 	book.addEventListener( "mousedown", mouseDownHandler, false );
@@ -138,29 +142,29 @@
 	function drawFlip( flip ) {
 		// Calculate the strength of the flip. Now the paper is folded the most when halfway across the page.
 		var strength = 1 - Math.abs( flip.progress );
-		
+
 		// Width of the folded paper
 		var foldWidth = ( PAGE_WIDTH * 0.5 ) * ( 1 - flip.progress );
-		
+
 		// X position of the folded paper
 		var foldX = PAGE_WIDTH * flip.progress + foldWidth;
-		
+
 		// How far the page should outdent vertically due to perspective
 		var verticalOutdent = 40 * strength;
-		
+
 		// The maximum width of the left and right side shadows
 		var paperShadowWidth = ( PAGE_WIDTH * 0.5 ) * Math.max( Math.min( 1 - flip.progress, 0.5 ), 0 );
 		var rightShadowWidth = ( PAGE_WIDTH * 0.5 ) * Math.max( Math.min( strength, 0.5 ), 0 );
 		var leftShadowWidth = ( PAGE_WIDTH * 0.5 ) * Math.max( Math.min( strength, 0.5 ), 0 );
-		
-		
+
+
 		// Change page element width to match the x position of the fold
 		flip.page.style.width = Math.max(foldX, 0) + "px";
-		
+
 		context.save();
 		context.translate( CANVAS_PADDING + ( BOOK_WIDTH / 2 ), PAGE_Y + CANVAS_PADDING );
-		
-		
+
+
 		// Draw a sharp shadow on the left side of the page
 		context.strokeStyle = 'rgba(0,0,0,'+(0.05 * strength)+')';
 		context.lineWidth = 30 * strength;
@@ -168,13 +172,13 @@
 		context.moveTo(foldX - foldWidth, -verticalOutdent * 0.5);
 		context.lineTo(foldX - foldWidth, PAGE_HEIGHT + (verticalOutdent * 0.5));
 		context.stroke();
-		
-		
+
+
 		// Right side drop shadow
 		var rightShadowGradient = context.createLinearGradient(foldX, 0, foldX + rightShadowWidth, 0);
 		rightShadowGradient.addColorStop(0, 'rgba(0,0,0,'+(strength*0.2)+')');
 		rightShadowGradient.addColorStop(0.8, 'rgba(0,0,0,0.0)');
-		
+
 		context.fillStyle = rightShadowGradient;
 		context.beginPath();
 		context.moveTo(foldX, 0);
@@ -182,13 +186,13 @@
 		context.lineTo(foldX + rightShadowWidth, PAGE_HEIGHT);
 		context.lineTo(foldX, PAGE_HEIGHT);
 		context.fill();
-		
-		
+
+
 		// Left side drop shadow
 		var leftShadowGradient = context.createLinearGradient(foldX - foldWidth - leftShadowWidth, 0, foldX - foldWidth, 0);
 		leftShadowGradient.addColorStop(0, 'rgba(0,0,0,0.0)');
 		leftShadowGradient.addColorStop(1, 'rgba(0,0,0,'+(strength*0.15)+')');
-		
+
 		context.fillStyle = leftShadowGradient;
 		context.beginPath();
 		context.moveTo(foldX - foldWidth - leftShadowWidth, 0);
@@ -196,19 +200,19 @@
 		context.lineTo(foldX - foldWidth, PAGE_HEIGHT);
 		context.lineTo(foldX - foldWidth - leftShadowWidth, PAGE_HEIGHT);
 		context.fill();
-		
-		
+
+
 		// Gradient applied to the folded paper (highlights & shadows)
 		var foldGradient = context.createLinearGradient(foldX - paperShadowWidth, 0, foldX, 0);
 		foldGradient.addColorStop(0.35, '#fafafa');
 		foldGradient.addColorStop(0.73, '#eeeeee');
 		foldGradient.addColorStop(0.9, '#fafafa');
 		foldGradient.addColorStop(1.0, '#e2e2e2');
-		
+
 		context.fillStyle = foldGradient;
 		context.strokeStyle = 'rgba(0,0,0,0.06)';
 		context.lineWidth = 0.5;
-		
+
 		// Draw the folded piece of paper
 		context.beginPath();
 		context.moveTo(foldX, 0);
@@ -216,12 +220,12 @@
 		context.quadraticCurveTo(foldX, PAGE_HEIGHT + (verticalOutdent * 2), foldX - foldWidth, PAGE_HEIGHT + verticalOutdent);
 		context.lineTo(foldX - foldWidth, -verticalOutdent);
 		context.quadraticCurveTo(foldX, -verticalOutdent * 2, foldX, 0);
-		
+
 		context.fill();
 		context.stroke();
 		context.restore();
 	}
-	
+
 })();
 
 
