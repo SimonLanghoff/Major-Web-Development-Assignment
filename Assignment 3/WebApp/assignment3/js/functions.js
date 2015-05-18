@@ -299,8 +299,8 @@ function clearCurrentPhotoBook(){
     //$('#photo-book-container').children().remove();
     // Get all the children of the div element and remove it
     //$('#pages').children('section').children('div').children().remove();
-    //$('#pages').children().remove();
-    $('#pages').find('figure').remove();
+    $('#pages').children().remove();
+
     // TODO: Update canvas?
 }
 
