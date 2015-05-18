@@ -4,20 +4,12 @@ $(document).ready(function() {
     nextPosY = 10;
     nextPhotoBookId = 1;
     nextPhotoId = 0;
-    currentBookId = 1;
+    currentBookId = 2;
 
     //initCanvas();
 
     // populate list with books in storage
-    getAllBooksInStorage();
-
-    // override book list dropdown link event
-    $('#dropdown-book-list').children('li').click(function() {
-        console.log('clicked on saved book');
-        loadPhotoBook($(this).children('a').text());
-    });
-
-
+    updateBookList();
 
     // Override search event
     $('#search-form').submit(function(e) {
@@ -319,6 +311,8 @@ function addPhotoToContainer(photoElement){
 
 function savePhotoBook(){
     localStorage.setItem('photo-book-' + (currentBookId), $('#photo-book-container').html());
+    // Update listings of saved books.
+    updateBookList();
 }
 
 function deletePhotoBook(id){
@@ -331,12 +325,30 @@ function loadPhotoBook(id){
     $('#photo-book-container').append(localStorage.getItem(id));
 }
 
-function getAllBooksInStorage(){
+//function getAllBooksInStorage(){
+//    for (var i = 0; i < localStorage.length; i++){
+//        key = localStorage.key(i);
+//        console.log(localStorage.getItem(localStorage.key(i)));
+//
+//        $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
+//    }
+//}
+
+function updateBookList(){
+    // Clear current list
+    $('#dropdown-book-list').children().remove();
+
+    // Add all saved books.
     for (var i = 0; i < localStorage.length; i++){
         key = localStorage.key(i);
-        console.log(localStorage.getItem(localStorage.key(i)));
-
         $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
     }
+
+    // Make sure that event listeners are added.
+    // override book list dropdown link event
+    $('#dropdown-book-list').children('li').click(function() {
+        // Show the book that was linked to.
+        loadPhotoBook($(this).children('a').text());
+    });
 }
 
