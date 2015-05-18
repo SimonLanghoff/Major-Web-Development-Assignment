@@ -29,6 +29,13 @@ $(document).ready(function() {
     });
 
     // Override Save button click
+    $('#btn-create-book').click(function(e) {
+        console.log('Creating Book');
+        createNewPhotoBook();
+    });
+
+
+    // Override Save button click
     $('#btn-save-book').click(function(e) {
         console.log('Saving Book');
         savePhotoBook();
@@ -295,7 +302,8 @@ function savePhotoBook(){
 }
 
 // Simply clears the photo container of any items.
-function removeCurrentPhotoBook(){
+function clearCurrentPhotoBook(){
+    currentPhotoBookId = null;
     $('#photo-book-container').children().remove();
 }
 
@@ -305,21 +313,18 @@ function deletePhotoBook(id){
     updateBookList();
 
     if(currentPhotoBookId === id){
-        // We are removing the book that we are currently viewing, so remove the current one and create a new book.
-        removeCurrentPhotoBook();
-        createNewPhotoBook();
+        // We are removing the book that we are currently viewing
+        clearCurrentPhotoBook();
     }
 }
 
 function loadPhotoBook(id){
     // Remove the currently displayed book and then add the one requested.
-    removeCurrentPhotoBook()
+    clearCurrentPhotoBook()
     $('#photo-book-container').append(localStorage.getItem(id));
 
     currentPhotoBookId = id;
 }
-
-
 
 function updateBookList(){
     // Clear current list
@@ -345,6 +350,12 @@ function updateBookList(){
 }
 
 function createNewPhotoBook(){
+    // TODO: set new background (book).
+
+    if(currentPhotoBookId != null){
+        clearCurrentPhotoBook();
+    }
+
     // Create a unique id for the new book
     var key = 'photo-book-' + getRandomWholeNumber(0, 10000);
 
