@@ -67,9 +67,9 @@
 	// Render the page flip 60 times a second
 	setInterval( render, 1000 / 60 );
 
-	document.addEventListener( "mousemove", mouseMoveHandler, false );
-	document.addEventListener( "mousedown", mouseDownHandler, false );
-	document.addEventListener( "mouseup", mouseUpHandler, false );
+	book.addEventListener( "mousemove", mouseMoveHandler, false );
+	book.addEventListener( "mousedown", mouseDownHandler, false );
+	book.addEventListener( "mouseup", mouseUpHandler, false );
 
 	function mouseMoveHandler( event ) {
 		// Offset mouse position so that the top of the book spine is 0,0
