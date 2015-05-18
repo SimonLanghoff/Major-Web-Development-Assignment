@@ -114,6 +114,9 @@
 			}
 
 			flips[i].dragging = false;
+
+            // Create attribute with current page count.
+            $('#pages').attr('page', page);
 		}
 	}
 

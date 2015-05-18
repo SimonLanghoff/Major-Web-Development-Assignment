@@ -7,8 +7,6 @@ $(document).ready(function() {
 
     currentPhotoBookId = null;
 
-    currentPage = 0;
-
     // populate list with books in storage
     updateBookList();
 
@@ -21,9 +19,6 @@ $(document).ready(function() {
 
         // Get input
         searchTerms = $('#search-form > div > input').val();
-
-        // Set pageNumber to 1
-        pageNumber = 1;
 
         loadPhotos(searchTerms);
     });
@@ -179,7 +174,7 @@ function loadPhotos(terms){
         'method': 'flickr.photos.search',
         'api_key': 'a3fabd055784a302a7d61d6502b75e6d',
         'tags': searchTerms,
-        'page': pageNumber,
+        'page': '1', // TODO update page number. Make it browsable.
         'per_page': '9',
         'format': 'json'
 
@@ -203,7 +198,6 @@ function loadPhotos(terms){
             $('<figcaption>' + photo.title.substring(0, 55) + '</figcaption>').appendTo(parentFigure);
 
             nextPhotoId = nextPhotoId + 1;
-
         });
 
         addDragDropHandlers();
@@ -240,6 +234,7 @@ function addPhotoToBook(photoElement){
     $(photoElement).remove(); // remove the photo from the origin container.
 
     // Then add the element to the photo-book
+    pageNumber = $('#pages').attr('page');
     console.log('page number: ' + pageNumber);
     $('#pages').children().eq(pageNumber).children().append(photoElement);
 

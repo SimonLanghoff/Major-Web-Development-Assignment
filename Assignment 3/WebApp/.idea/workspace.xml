@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assignment3/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6716197" vertical-offset="210" max-vertical-offset="1710">
-              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+            <state vertical-scroll-proportion="5.7083335" vertical-offset="1037" max-vertical-offset="1710">
+              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,8 @@
       <file leaf-file-name="pageflip.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assignment3/js/pageflip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.814815" vertical-offset="650" max-vertical-offset="3555">
-              <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+            <state vertical-scroll-proportion="-14.37037" vertical-offset="1382" max-vertical-offset="3600">
+              <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assignment3/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.592592" vertical-offset="3887" max-vertical-offset="5730">
-              <caret line="289" column="24" selection-start-line="289" selection-start-column="24" selection-end-line="289" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.33283582" vertical-offset="2417" max-vertical-offset="5655">
+              <caret line="176" column="67" selection-start-line="176" selection-start-column="67" selection-end-line="176" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -94,9 +94,9 @@
         <option value="$PROJECT_DIR$/assignment3/styles.css" />
         <option value="$PROJECT_DIR$/assignment3/css/main.css" />
         <option value="$PROJECT_DIR$/assignment3/css/styles.css" />
+        <option value="$PROJECT_DIR$/assignment3/index.html" />
         <option value="$PROJECT_DIR$/assignment3/js/pageflip.js" />
         <option value="$PROJECT_DIR$/assignment3/js/functions.js" />
-        <option value="$PROJECT_DIR$/assignment3/index.html" />
       </list>
     </option>
   </component>
@@ -495,14 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assignment3/js/pageflip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.814815" vertical-offset="650" max-vertical-offset="3555">
-          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assignment3/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1973" max-vertical-offset="3555">
@@ -511,18 +503,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assignment3/js/functions.js">
+    <entry file="file://$PROJECT_DIR$/assignment3/js/pageflip.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.592592" vertical-offset="3887" max-vertical-offset="5730">
-          <caret line="289" column="24" selection-start-line="289" selection-start-column="24" selection-end-line="289" selection-end-column="24" />
+        <state vertical-scroll-proportion="-14.37037" vertical-offset="1382" max-vertical-offset="3600">
+          <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assignment3/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6716197" vertical-offset="210" max-vertical-offset="1710">
-          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+        <state vertical-scroll-proportion="5.7083335" vertical-offset="1037" max-vertical-offset="1710">
+          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assignment3/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33283582" vertical-offset="2417" max-vertical-offset="5655">
+          <caret line="176" column="67" selection-start-line="176" selection-start-column="67" selection-end-line="176" selection-end-column="67" />
           <folding />
         </state>
       </provider>
