@@ -320,7 +320,7 @@ function deletePhotoBook(id){
 
 function loadPhotoBook(id){
     // Remove the currently displayed book and then add the one requested.
-    clearCurrentPhotoBook()
+    clearCurrentPhotoBook();
     $('#photo-book-container').append(localStorage.getItem(id));
 
     currentPhotoBookId = id;
