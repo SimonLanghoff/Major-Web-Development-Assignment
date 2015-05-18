@@ -4,7 +4,8 @@ $(document).ready(function() {
     nextPosY = 10;
     nextPhotoBookId = 1;
     nextPhotoId = 0;
-    currentBookId = 2;
+
+    currentPhotoBookId = null;
 
     //initCanvas();
 
@@ -14,9 +15,6 @@ $(document).ready(function() {
     // Override search event
     $('#search-form').submit(function(e) {
         console.log('form submitted');
-
-        // Clear all previous search results
-
 
         // Stop page-reload
         e.preventDefault();
@@ -39,9 +37,7 @@ $(document).ready(function() {
     // Override Delete button click
     $('#btn-delete-book').click(function(e) {
         console.log('Deleting Book');
-        deletePhotoBook(currentBookId);
-
-        localStorage.clear();
+        deletePhotoBook(currentPhotoBookId);
     });
 
     loadPhotoBook(0);
@@ -85,14 +81,6 @@ function handleDragOver(e) {
 function handleDragEnter(e) {
     console.log('dragenter');
     // e is the target
-    //if($(draggedElement).attr('id') === $(draggedParent).attr('id')){
-    //    console.log('test');
-    //} else {
-    //    console.log($(draggedElement).attr('id'));
-    //    console.log($(draggedParent).attr('id'));
-    //    $(this).addClass('over');
-    //    $(this).addClass('hover');
-    //}
 
     $(this).addClass('over');
     $(this).addClass('hover');
@@ -113,9 +101,6 @@ function handleDragLeave(e) {
         $('.over').removeClass('over')
         $('hover').removeClass('hover')
     }
-
-
-
 }
 
 function handleDrop(e) {
@@ -182,13 +167,7 @@ function addDragDropHandlers(){
     $('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
     $('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
     $('#photo-book-container').get(0).addEventListener('dragleave', handleDragLeave, false);
-
-
-
 }
-
-
-
 
 function loadPhotos(terms){
     // TODO: Get current page of "book"
@@ -235,8 +214,6 @@ function loadPhotos(terms){
 
         addDragDropHandlers();
     });
-
-
 }
 
 function initCanvas(){
@@ -310,33 +287,48 @@ function addPhotoToContainer(photoElement){
 }
 
 function savePhotoBook(){
-    localStorage.setItem('photo-book-' + (currentBookId), $('#photo-book-container').html());
+    var key = createNewPhotoBook();
+    localStorage.setItem(key, $('#photo-book-container').html());
+
     // Update listings of saved books.
     updateBookList();
 }
 
+// Simply clears the photo container of any items.
+function removeCurrentPhotoBook(){
+    $('#photo-book-container').children().remove();
+}
+
 function deletePhotoBook(id){
-    localStorage.removeItem('photo-book-' + id);
+    // remove and refresh.
+    localStorage.removeItem(id);
+    updateBookList();
+
+    if(currentPhotoBookId === id){
+        // We are removing the book that we are currently viewing, so remove the current one and create a new book.
+        removeCurrentPhotoBook();
+        createNewPhotoBook();
+    }
 }
 
 function loadPhotoBook(id){
     // Remove the currently displayed book and then add the one requested.
-    $('#photo-book-container').children().remove();
+    removeCurrentPhotoBook()
     $('#photo-book-container').append(localStorage.getItem(id));
+
+    currentPhotoBookId = id;
 }
 
-//function getAllBooksInStorage(){
-//    for (var i = 0; i < localStorage.length; i++){
-//        key = localStorage.key(i);
-//        console.log(localStorage.getItem(localStorage.key(i)));
-//
-//        $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
-//    }
-//}
+
 
 function updateBookList(){
     // Clear current list
     $('#dropdown-book-list').children().remove();
+
+    if(localStorage.length <= 0){
+        $('#dropdown-book-list').append('<li>' + 'No books stored :(' + '</li>');
+        return;
+    }
 
     // Add all saved books.
     for (var i = 0; i < localStorage.length; i++){
@@ -350,5 +342,24 @@ function updateBookList(){
         // Show the book that was linked to.
         loadPhotoBook($(this).children('a').text());
     });
+}
+
+function createNewPhotoBook(){
+    // Create a unique id for the new book
+    var key = 'photo-book-' + getRandomWholeNumber(0, 10000);
+
+    while(localStorage.getItem(key)){
+        console.log("Key already exists! Generating new key!");
+        key = 'photo-book-' + getRandomWholeNumber(0, 10000);
+    }
+
+    localStorage.setItem(key, $('#photo-book-container').html());
+
+    // Return the generated id for reference.
+    return key;
+}
+
+function getRandomWholeNumber(min, max) {
+    return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
