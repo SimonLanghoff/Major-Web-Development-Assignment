@@ -11,12 +11,12 @@
 	//var PAGE_HEIGHT = 250;
 
     // Dimensions of the whole book
-    var BOOK_WIDTH = 830;
-    var BOOK_HEIGHT = 260;
+    var BOOK_WIDTH = 1800;
+    var BOOK_HEIGHT = 560;
 
     // Dimensions of one page in the book
-    var PAGE_WIDTH = 400;
-    //var PAGE_HEIGHT = 250;
+    var PAGE_WIDTH = 860;
+    var PAGE_HEIGHT = 540;
 
 
 
@@ -132,13 +132,11 @@
 			if( flip.dragging || Math.abs( flip.progress ) < 0.997 ) {
 				drawFlip( flip );
 			}
-
 		}
-
 	}
 
 	function drawFlip( flip ) {
-		// Strength of the fold is strongest in the middle of the book
+		// Calculate the strength of the flip. Now the paper is folded the most when halfway across the page.
 		var strength = 1 - Math.abs( flip.progress );
 		
 		// Width of the folded paper
@@ -148,7 +146,7 @@
 		var foldX = PAGE_WIDTH * flip.progress + foldWidth;
 		
 		// How far the page should outdent vertically due to perspective
-		var verticalOutdent = 20 * strength;
+		var verticalOutdent = 40 * strength;
 		
 		// The maximum width of the left and right side shadows
 		var paperShadowWidth = ( PAGE_WIDTH * 0.5 ) * Math.max( Math.min( 1 - flip.progress, 0.5 ), 0 );
@@ -221,8 +219,6 @@
 		
 		context.fill();
 		context.stroke();
-		
-		
 		context.restore();
 	}
 	

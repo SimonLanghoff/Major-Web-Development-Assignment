@@ -122,7 +122,7 @@ header {
     transform: rotate(-5deg);
     -webkit-backface-visibility:hidden; /* prevent rotated text in the caption being jagged in Chrome and Safari */
 }
-/***Rotate each even numbered image 2 degrees clockwise***/
+/*** Rotate each even numbered image 2 degrees clockwise ***/
 #photo-container figure:nth-child(even) { /*see support section below for more info on nth-child*/
     -webkit-transform:rotate(5deg);
     -moz-transform: rotate(5deg);
@@ -138,23 +138,26 @@ header {
 /***** Photo Book Canvas Section ******/
 #photo-book {
     background: url("/assignment3/img/book.png") no-repeat;
+    background-size: contain;
     position: absolute;
-    width: 830px;
-    height: 260px;
-    left: 50%;
-    top: 50%;
-    margin-left: -400px;
+    width: 1800px;
+    height: 560px;
+    left: 50%; /* We are only interested in rendering the right hand side. */
+    top: 30%;
+    margin-left: -1200px;
     margin-top: -125px;
 }
 
+/* Styling of every content page. */
 #pages section {
-    background: url("/assignment3/img/paper.png") no-repeat;
+    /*background: url("/assignment3/img/paper.png") no-repeat;*/
+    /*background-size: contain;*/
     display: block;
-    width: 400px;
-    height: 250px;
+    width: 860px;
+    height: 540px;
     position: absolute;
-    left: 415px;
-    top: 5px;
+    left: 50%;
+    top: 2%;
     overflow: hidden;
 }
 #pages section>div {
