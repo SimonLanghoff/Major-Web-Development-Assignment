@@ -7,7 +7,7 @@ $(document).ready(function() {
     nextBookPhotoId = 1;
     nextPhotoId = 0;
 
-    // init empty hashmap to store count for search term.
+    // init empty hashmap to store count for search terms.
     searchHistory = {};
 
     currentPhotoBookId = createNewPhotoBook();
@@ -17,8 +17,6 @@ $(document).ready(function() {
 
     // Override search event
     $('#search-form').submit(function(e) {
-        console.log('form submitted');
-
         // Stop page-reload
         e.preventDefault();
 
@@ -39,24 +37,20 @@ $(document).ready(function() {
 
     // Override create button click
     $('#btn-create-book').click(function(e) {
-        console.log('Creating Book');
         currentPhotoBookId = createNewPhotoBook();
     });
 
 
     // Override Save button click
     $('#btn-save-book').click(function(e) {
-        console.log('Saving Book');
         savePhotoBook(currentPhotoBookId);
     });
 
     // Override Delete button click
     $('#btn-delete-book').click(function(e) {
-        console.log('Deleting Book');
         deletePhotoBook(currentPhotoBookId);
     });
 
-    //loadPhotoBook(0);
     // Add handlers so images can be removed from the book without getting images from flickr.
     addDragDropHandlers();
 });
@@ -81,7 +75,6 @@ function handleDragOver(e) {
     if (e.preventDefault) {
         e.preventDefault(); // Necessary. Allows drop.
     }
-
     e.dataTransfer.effectAllowed = 'move'; // Necessary. Allows drop.
 
     return false;
@@ -89,7 +82,6 @@ function handleDragOver(e) {
 
 function handleDragEnter(e) {
     // e is the target
-
     if($(this).attr('id') != 'photo-container') {
         $(this).addClass('over')
         $(this).addClass('hover')
@@ -99,9 +91,7 @@ function handleDragEnter(e) {
 function handleDragLeave(e) {
     // e is the target
     // Only remove the class if we are outside the book or photo containers.
-    if($(this).attr('id') === 'photo-book-container') {
-        // DO nothing
-    } else {
+    if($(this).attr('id') === 'photo-container') {
         $('.over').removeClass('over')
         $('hover').removeClass('hover')
     }
@@ -112,18 +102,14 @@ function handleDrop(e) {
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
-    
+
     $('.over').removeClass('over');
     $('.hover').removeClass('hover');
 
     if(draggedElement != this) {
-        //Don't do anything if dropping element on same element (this = target)
-        //if($(this).attr('id') === 'photo-book-container'){
         if($(this).attr('id') === 'photo-book'){
-            console.log('Dropping on book');
             addPhotoToBook(draggedElement);
         } else if($(this).attr('id') === 'photo-container') {
-            console.log('Dropping on container');
             addPhotoToContainer(draggedElement);
         }
     }
@@ -138,28 +124,18 @@ function handleDragEnd(e) {
 }
 
 function addDragDropHandlers(){
-    // Select all photos and add drag 'n drop event handlers.
-    console.log("Adding Handlers");
+    // Enable photos to be moved.
     $('.photo').parent().each(function(i, photo) {
         photo.addEventListener('dragstart', handleDragStart, false);
-        //photo.addEventListener('dragenter', handleDragEnter, false);
-        //photo.addEventListener('dragover', handleDragOver, false); // Dragover is fired multiple times during a hover, dragenter is not.
-        //photo.addEventListener('dragleave', handleDragLeave, false);
-        //photo.addEventListener('drop', handleDrop, false);
-        //photo.addEventListener('dragend', handleDragEnd, false);
     });
 
-
+    // Listen for events on photo book and photo-container.
+    // TODO: right now the canvas handlers intercept the drag event, so cannot move images from book back to photo-container unfortunately.
     $('#photo-container').get(0).addEventListener('dragover', handleDragOver, false);
     $('#photo-container').get(0).addEventListener('dragenter', handleDragEnter, false);
     $('#photo-container').get(0).addEventListener('drop', handleDrop, false);
     $('#photo-container').get(0).addEventListener('dragleave', handleDragLeave, false);
     $('#photo-container').get(0).addEventListener('dragend', handleDragEnd, false);
-
-    //$('#photo-book-container').get(0).addEventListener('dragover', handleDragOver, false);
-    //$('#photo-book-container').get(0).addEventListener('dragenter', handleDragEnter, false);
-    //$('#photo-book-container').get(0).addEventListener('drop', handleDrop, false);
-    //$('#photo-book-container').get(0).addEventListener('dragleave', handleDragLeave, false);
 
     $('#photo-book').get(0).addEventListener('dragover', handleDragOver, false);
     $('#photo-book').get(0).addEventListener('dragenter', handleDragEnter, false);
@@ -167,17 +143,8 @@ function addDragDropHandlers(){
     $('#photo-book').get(0).addEventListener('dragleave', handleDragLeave, false);
 }
 
+// Used the example from the lectures as example to fetch images and preload them.
 function loadPhotos(terms){
-    // TODO: Get current page of "book"
-    //$.getJSON('https://api.flickr.com/services/rest/?jsoncallback=?', {
-    //    'method' : 'flickr.galleries.getPhotos',
-    //    'api_key' : 'a3fabd055784a302a7d61d6502b75e6d',
-    //    'gallery_id' : "6065-72157617483228192",
-    //    'extras' : 'date_upload, owner_name',
-    //    'per_page' : 5,
-    //    'page' : 1,
-    //    'format' : 'json'
-
     // Query flickr API for images fitting search term in json format.
     $.getJSON('https://api.flickr.com/services/rest/?jsoncallback=?', {
         'method': 'flickr.photos.search',
@@ -194,7 +161,6 @@ function loadPhotos(terms){
             $('<div />').attr('id', 'photo-' + nextPhotoId).addClass('photo').attr('draggable', 'true').appendTo('#photo-container').wrap('<figure></figure>');
 
             var imgURL = 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg';
-
             // Pre-cache image see http://perishablepress.com/a-way-to-preload-images-without-javascript-that-is-so-much-better/
             $('<img />').attr({'src': imgURL, 'data-image-num': nextPhotoId}).load(function() {
                 var imageDataNum = $(this).attr('data-image-num');
@@ -217,11 +183,9 @@ function loadPhotos(terms){
 }
 
 function addPhotoToBook(photoElement){
-    //var book = $('#photo-book-container').get(0);
     var book = $('#photo-book').get(0);
     var pageNo = getCurrentPageNumber();
     var pictureCount = getPictureCountOnPage(pageNo);
-    console.log("pictures on page " + pageNo + " : " + pictureCount);
 
     if(pictureCount < 4){
         $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
@@ -229,13 +193,9 @@ function addPhotoToBook(photoElement){
         $(photoElement).children().removeAttr('id');
         $(photoElement).css('top', "").css('left', "");
 
-        // TODO: do this in the right section depending on the page we are on.
-        $(book).children('section').children('div').append(photoElement);
-        //$(book).children('section').children('div').append(photoElement);
+        $(photoElement).remove(); // remove the photo from the origin container.
 
-        $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
-
-        //// Add the element to the photo-book
+        //// Add the element to the photo-book on the current page
         $('#pages').children().eq(pageNo).children().append(photoElement);
 
         nextBookPhotoId = nextBookPhotoId + 1;
@@ -248,9 +208,6 @@ function addPhotoToBook(photoElement){
 }
 
 function addPhotoToContainer(photoElement){
-    console.log("ADDING IMAGE TO Container");
-    console.log("IMG Source = " + photoElement);
-
     var container = $('#photo-container').get(0);
 
     $(photoElement).children('div').attr('id', "photo-" + nextPhotoId);
@@ -277,7 +234,6 @@ function setRandomPosition(element){
 }
 
 function savePhotoBook(key){
-    //localStorage.setItem(key, $('#photo-book-container').html());
     localStorage.setItem(key, $('#pages').html());
 
     // Update listings of saved books.
@@ -287,12 +243,7 @@ function savePhotoBook(key){
 // Simply clears the photo container of any items.
 function clearCurrentPhotoBook(){
     currentPhotoBookId = null;
-    //$('#photo-book-container').children().remove();
-    // Get all the children of the div element and remove it
-    //$('#pages').children('section').children('div').children().remove();
     $('#pages').children().remove();
-    //$('#pages').find('figure').remove(); // This will remove all sections, script might not work.
-
     setCurrentPageNumber(0);
 }
 
@@ -333,10 +284,7 @@ function updateBookList(){
     // Add all saved books.
     for (var i = 0; i < localStorage.length; i++){
         var key = localStorage.key(i);
-        //if(key.contains("book")){
-            $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
-        //}
-
+        $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
     }
 
     // Make sure that event listeners are added.
@@ -358,9 +306,6 @@ function createNewPhotoBook(){
         console.log("Key already exists! Generating new key!");
         key = 'photo-book-' + getRandomWholeNumber(0, 10000);
     }
-
-    //localStorage.setItem(key, $('#photo-book-container').html());
-     // localStorage.setItem(key, $('#pages').html()); // Don't save the book unless told to do so!
 
     // Add pages to the book and updates the renderer script
     addPagesToBook(20);
@@ -398,7 +343,6 @@ function addPagesToBook(count){
 
 function resetBookScript(shouldStartOver){
     if(shouldStartOver){
-        console.log('starting over');
         page = 0;
         flips = [];
 
