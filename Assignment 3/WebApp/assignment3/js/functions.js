@@ -1,3 +1,7 @@
+// Display welcome modal.
+$(window).load(function(){
+    $('#modal-welcome').modal('show');
+});
 
 $(document).ready(function() {
     nextBookPhotoId = 1;
@@ -85,19 +89,18 @@ function handleDragOver(e) {
 
 function handleDragEnter(e) {
     // e is the target
-    $(this).addClass('over');
-    $(this).addClass('hover');
 
+    if($(this).attr('id') != 'photo-container') {
+        $(this).addClass('over')
+        $(this).addClass('hover')
+    }
 }
 
 function handleDragLeave(e) {
     // e is the target
     // Only remove the class if we are outside the book or photo containers.
-
     if($(this).attr('id') === 'photo-book-container') {
-
-    } else if($(this).attr('id') == 'photo-container') {
-
+        // DO nothing
     } else {
         $('.over').removeClass('over')
         $('hover').removeClass('hover')
@@ -109,9 +112,7 @@ function handleDrop(e) {
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
-
-    //$('#photo-book-container').removeClass('over');
-    //$('#photo-book-container').removeClass('hover');
+    
     $('.over').removeClass('over');
     $('.hover').removeClass('hover');
 
@@ -332,7 +333,10 @@ function updateBookList(){
     // Add all saved books.
     for (var i = 0; i < localStorage.length; i++){
         var key = localStorage.key(i);
-        $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
+        //if(key.contains("book")){
+            $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
+        //}
+
     }
 
     // Make sure that event listeners are added.
