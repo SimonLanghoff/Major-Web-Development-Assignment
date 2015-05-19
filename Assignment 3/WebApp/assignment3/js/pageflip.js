@@ -102,6 +102,12 @@
 
             // Create attribute with current page number.
             $('#pages').attr('page', page);
+            // TODO:  If we are at the end of the book, add one more page.
+            //if(page === pages.length - 1){
+            //    console.log('add the end of the book!');
+            //    addPagesToBook(1);
+            //    resetBookScript(false);
+            //}
 		}
 	}
 

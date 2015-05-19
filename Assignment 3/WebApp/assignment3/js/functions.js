@@ -197,8 +197,11 @@ function loadPhotos(terms){
             // Pre-cache image see http://perishablepress.com/a-way-to-preload-images-without-javascript-that-is-so-much-better/
             $('<img />').attr({'src': imgURL, 'data-image-num': nextPhotoId}).load(function() {
                 var imageDataNum = $(this).attr('data-image-num');
-                $('#photo-' + imageDataNum).css('background-image', 'url(' + imgURL + ')').removeClass('fade-out').addClass('fade-in');
 
+                // Get the random x/y coordinates, subtract size of image from max value to prevent out of bounds.
+                setRandomPosition($('#photo-' + imageDataNum).parent('figure'));
+
+                $('#photo-' + imageDataNum).css('background-image', 'url(' + imgURL + ')').removeClass('fade-out').addClass('fade-in');
             });
 
             // Get the parent figure element and append the figcaption
@@ -230,6 +233,7 @@ function addPhotoToBook(photoElement){
     $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
     $(photoElement).addClass("in-book");
     $(photoElement).children().removeAttr('id');
+    $(photoElement).css('top', "").css('left', "");
 
     // TODO: do this in the right section depending on the page we are on.
     $(book).children('section').children('div').append(photoElement);
@@ -256,9 +260,20 @@ function addPhotoToContainer(photoElement){
 
     $(photoElement).remove(); // remove the photo from the origin container.
 
+    setRandomPosition(photoElement);
     $(container).append(photoElement);
 
     nextPhotoId = nextPhotoId + 1;
+}
+
+function setRandomPosition(element){
+    var maxX = $('#photo-container').innerWidth() - 300;
+    var positionX = getRandomWholeNumber(0, maxX);
+
+    var maxY = $('#photo-container').innerHeight() - 300;
+    var positionY = getRandomWholeNumber(0, maxY);
+
+    $(element).css({left: positionX, top: positionY});
 }
 
 function savePhotoBook(key){
@@ -290,6 +305,8 @@ function deletePhotoBook(id){
         // We are removing the book that we are currently viewing
         clearCurrentPhotoBook();
     }
+
+    createNewPhotoBook();
 }
 
 function loadPhotoBook(id){
@@ -300,7 +317,8 @@ function loadPhotoBook(id){
 
     currentPhotoBookId = id;
 
-    resetBookScript();
+    // Indicate that we need to start from page 0.
+    resetBookScript(true);
 }
 
 function updateBookList(){
@@ -345,9 +363,10 @@ function createNewPhotoBook(){
     //localStorage.setItem(key, $('#photo-book-container').html());
      // localStorage.setItem(key, $('#pages').html()); // Don't save the book unless told to do so!
 
+    // Add pages to the book and updates the renderer script
     addPagesToBook(5);
 
-    resetBookScript();
+    resetBookScript(true);
 
     // Return the generated id for reference.
     return key;
@@ -374,18 +393,19 @@ function setCurrentPageNumber(value){
 function addPagesToBook(count){
     for(i = 0; i < count; i++){
         var zIndex = count - i;
-        console.log('Adding Page');
         $('#pages').append("<section style=\"z-index: " +zIndex+ ";\"" +"><div></div></section>");
     }
 }
 
-function resetBookScript(){
-    // We also need to reset all the page animations and start start from page 0
-    $('#pages').children('section').css("width", "860");
+function resetBookScript(shouldStartOver){
+    if(shouldStartOver){
+        console.log('starting over');
+        page = 0;
+        flips = [];
 
-    page = 0;
-
-    flips = [];
+        // We also need to reset all the page animations and start start from page 0
+        $('#pages').children('section').css("width", "860");
+    }
 
     var book = $('#photo-book');
 

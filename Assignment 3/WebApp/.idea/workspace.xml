@@ -38,8 +38,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assignment3/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.666666" vertical-offset="977" max-vertical-offset="1710">
-              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="54" />
+            <state vertical-scroll-proportion="-16.25" vertical-offset="0" max-vertical-offset="1710">
+              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,8 @@
       <file leaf-file-name="pageflip.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assignment3/js/pageflip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1111112" vertical-offset="0" max-vertical-offset="3315">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state vertical-scroll-proportion="-34.444443" vertical-offset="0" max-vertical-offset="3405">
+              <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -68,8 +68,8 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assignment3/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7037036" vertical-offset="3335" max-vertical-offset="4005">
-              <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.333333" vertical-offset="0" max-vertical-offset="3960">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -78,11 +78,11 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assignment3/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37313432" vertical-offset="5495" max-vertical-offset="6390">
-              <caret line="383" column="53" selection-start-line="383" selection-start-column="53" selection-end-line="383" selection-end-column="53" />
+            <state vertical-scroll-proportion="-1.8432835" vertical-offset="5570" max-vertical-offset="6690">
+              <caret line="289" column="18" selection-start-line="289" selection-start-column="18" selection-end-line="289" selection-end-column="18" />
               <folding>
-                <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
-                <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
+                <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
+                <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -96,10 +96,10 @@
         <option value="$PROJECT_DIR$/assignment3/functions.js" />
         <option value="$PROJECT_DIR$/assignment3/styles.css" />
         <option value="$PROJECT_DIR$/assignment3/css/main.css" />
-        <option value="$PROJECT_DIR$/assignment3/index.html" />
         <option value="$PROJECT_DIR$/assignment3/js/pageflip.js" />
-        <option value="$PROJECT_DIR$/assignment3/css/styles.css" />
+        <option value="$PROJECT_DIR$/assignment3/index.html" />
         <option value="$PROJECT_DIR$/assignment3/js/functions.js" />
+        <option value="$PROJECT_DIR$/assignment3/css/styles.css" />
       </list>
     </option>
   </component>
@@ -421,8 +421,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="3630">
           <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
           <folding>
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -456,8 +456,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="2280">
           <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
           <folding>
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -506,35 +506,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assignment3/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.666666" vertical-offset="977" max-vertical-offset="1710">
-          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assignment3/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7037036" vertical-offset="3335" max-vertical-offset="4005">
-          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+        <state vertical-scroll-proportion="-16.25" vertical-offset="0" max-vertical-offset="1710">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assignment3/js/pageflip.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1111112" vertical-offset="0" max-vertical-offset="3315">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state vertical-scroll-proportion="-34.444443" vertical-offset="0" max-vertical-offset="3405">
+          <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assignment3/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.333333" vertical-offset="0" max-vertical-offset="3960">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assignment3/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37313432" vertical-offset="5495" max-vertical-offset="6390">
-          <caret line="383" column="53" selection-start-line="383" selection-start-column="53" selection-end-line="383" selection-end-column="53" />
+        <state vertical-scroll-proportion="-1.8432835" vertical-offset="5570" max-vertical-offset="6690">
+          <caret line="289" column="18" selection-start-line="289" selection-start-column="18" selection-end-line="289" selection-end-column="18" />
           <folding>
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
-            <marker date="1432040055000" expanded="true" signature="12779:12787" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
+            <marker date="1432042928000" expanded="true" signature="13490:13498" placeholder="..." />
           </folding>
         </state>
       </provider>

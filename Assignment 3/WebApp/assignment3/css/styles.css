@@ -1,22 +1,18 @@
 /* Use a full-page background image. */
 html {
-    background: url(/assignment3/img/background/Elegant_Background-7.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    /*background: url(/assignment3/img/background/Elegant_Background-7.jpg) no-repeat center center fixed;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
 }
 
 body{
-    background: none;
+    background: #645A5A;
 }
 
 header {
-    background-color: rgba(0,0,0,0.5);
-}
-
-#content {
-    background-color:rgba(0,0,0,0.5);
+    /*background-color: rgba(0,0,0,0.5);*/
 }
 
 #content figure {
@@ -123,7 +119,8 @@ header {
         top: 75px;
         right: 0px;
         width: 25%;
-        background-color: red;
+        height: 850px;
+        margin-right: 20px;
     }
 }
 
