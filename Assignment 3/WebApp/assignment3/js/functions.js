@@ -5,8 +5,6 @@ $(document).ready(function() {
     nextBookPhotoId = 1;
     nextPhotoId = 0;
 
-    pageNumber = 0;
-
     // init empty hashmap to store count for search term.
     searchHistory = {};
 
@@ -121,8 +119,6 @@ function handleDrop(e) {
     $('.over').removeClass('over');
     $('.hover').removeClass('hover');
 
-
-
     if(draggedElement != this) {
         //Don't do anything if dropping element on same element (this = target)
         //if($(this).attr('id') === 'photo-book-container'){
@@ -221,16 +217,8 @@ function loadPhotos(terms){
 }
 
 function addPhotoToBook(photoElement){
-    //console.log("ADDING IMAGE TO BOOK");
-    //console.log("IMG Source = " + photoElement);
-    //console.log("Next X = " + nextPosX);
-    //console.log("Next Y = " + nextPosY);
-
     //var book = $('#photo-book-container').get(0);
     var book = $('#photo-book').get(0);
-
-    console.log('photo element: ');
-    console.log(photoElement);
 
     if(nextPosX > book.offsetWidth / 2) {
         // Reset PosX and increment Y so pictures are added on the next line.
@@ -238,40 +226,37 @@ function addPhotoToBook(photoElement){
         nextPosY = nextPosY + 100; //TODO: Update with image height
     }
 
+    // get current page number
+    var pageNo = getCurrentPageNumber();
+
     // TODO: Check if photos on page === 4, then go to next page.
     // Add 1 to page count because element has not been added yet.
-    var pictureCount = getPictureCountOnPage(pageNumber);
-    if(pictureCount + 1 >= 4){
-        // Anmiation and flip to next page.
+    var pictureCount = getPictureCountOnPage(pageNo);
+    console.log("pictures on page " + pageNo + " : " + pictureCount);
+
+    if(pictureCount >= 4){
+        // TODO Anmiation and flip to next page (or just don't add anything.
+        console.log('No more room on page!');
     } else {
-        $(photoElement).addClass("book-photo-" + (pictureCount + 1));
+        $(photoElement).addClass("book-section-" + (pictureCount + 1));
     }
 
     $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
     $(photoElement).addClass("in-book");
-
     $(photoElement).children().removeAttr('id');
 
     // TODO: do this in the right section depending on the page we are on.
-    console.log($(book).children('section').children('div').append(photoElement));
+    $(book).children('section').children('div').append(photoElement);
     //$(book).children('section').children('div').append(photoElement);
 
     $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
 
 
-    // Then add the element to the photo-book
-    pageNumber = $('#pages').attr('page');
-    console.log('page number: ' + pageNumber);
-    $('#pages').children().eq(pageNumber).children().append(photoElement);
+    //// Add the element to the photo-book
+    $('#pages').children().eq(pageNo).children().append(photoElement);
 
 
     nextBookPhotoId = nextBookPhotoId + 1;
-
-    //
-    //console.log("Next X after = " + nextPosX);
-    //console.log("Next Y after = " + nextPosY);
-    //console.log("ADDED IMAGE TO BOOK");
-
 }
 
 function addPhotoToContainer(photoElement){
@@ -330,6 +315,8 @@ function loadPhotoBook(id){
     $('#pages').append(localStorage.getItem(id));
 
     currentPhotoBookId = id;
+
+    resetBookScript();
 }
 
 function updateBookList(){
@@ -372,20 +359,13 @@ function createNewPhotoBook(){
     }
 
     //localStorage.setItem(key, $('#photo-book-container').html());
-    localStorage.setItem(key, $('#pages').html());
+     // localStorage.setItem(key, $('#pages').html()); // Don't save the book unless told to do so!
 
     updateBookList();
 
     addPagesToBook(5);
 
-    // Clear the previous running script
-    clearInterval($('photo-book').attr('interval-id'));
-
-    // Add the rendering process to the newly added pages.
-    // This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
-    $.getScript("js/pageflip.js", function(){
-        console.log('running script again');
-    });
+    resetBookScript();
 
     // Return the generated id for reference.
     return key;
@@ -399,6 +379,10 @@ function getPictureCountOnPage(pageNumber){
     return $('#pages').children().eq(pageNumber).children('div').children().length;
 }
 
+function getCurrentPageNumber(){
+    return $('#pages').attr('page');
+}
+
 // Add an empty page
 // Cannot get function to work, need to reapply script after removing section elements. so for now just doing the simple approach.
 function addPagesToBook(count){
@@ -409,3 +393,16 @@ function addPagesToBook(count){
     }
 }
 
+function resetBookScript(){
+    // We also need to reset all the page animations and start start from page 0
+    $('#pages').children('section').css("width", "800");
+
+    // Clear the previous running script
+    clearInterval($('photo-book').attr('interval-id'));
+
+    // Add the rendering process to the newly added pages.
+    // This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
+    $.getScript("js/pageflip.js", function(){
+        console.log('running script again');
+    });
+}

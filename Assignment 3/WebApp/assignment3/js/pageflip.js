@@ -1,11 +1,11 @@
 (function() {
     // Dimensions of the whole book
     var BOOK_WIDTH = 1800;
-    var BOOK_HEIGHT = 700;
+    var BOOK_HEIGHT = 750;
 
     // Dimensions of one page in the book
     var PAGE_WIDTH = 860;
-    var PAGE_HEIGHT = 670;
+    var PAGE_HEIGHT = 720;
 
 
 
