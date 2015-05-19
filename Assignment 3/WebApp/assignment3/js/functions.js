@@ -1,7 +1,5 @@
 
 $(document).ready(function() {
-    nextPosX = 10;
-    nextPosY = 10;
     nextBookPhotoId = 1;
     nextPhotoId = 0;
 
@@ -220,12 +218,6 @@ function addPhotoToBook(photoElement){
     //var book = $('#photo-book-container').get(0);
     var book = $('#photo-book').get(0);
 
-    if(nextPosX > book.offsetWidth / 2) {
-        // Reset PosX and increment Y so pictures are added on the next line.
-        nextPosX = 10;
-        nextPosY = nextPosY + 100; //TODO: Update with image height
-    }
-
     // get current page number
     var pageNo = getCurrentPageNumber();
 
@@ -251,10 +243,8 @@ function addPhotoToBook(photoElement){
 
     $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
 
-
     //// Add the element to the photo-book
     $('#pages').children().eq(pageNo).children().append(photoElement);
-
 
     nextBookPhotoId = nextBookPhotoId + 1;
 }
