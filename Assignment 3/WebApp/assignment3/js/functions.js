@@ -173,7 +173,7 @@ function loadPhotos(terms){
 
             // Get the parent figure element and append the figcaption
             var parentFigure = $('#photo-' + nextPhotoId).parent();
-            $('<figcaption>' + photo.title.substring(0, 55) + '</figcaption>').appendTo(parentFigure);
+            $('<figcaption>' + photo.title.substring(0, 75) + '</figcaption>').appendTo(parentFigure);
 
             nextPhotoId = nextPhotoId + 1;
         });
@@ -378,7 +378,7 @@ function resetBookScript(shouldStartOver){
     //
     //// Add the rendering process to the newly added pages.
     //// This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
-    //$.getScript("js/pageflip.js", function(){
+    //$.getScript("js/photobook.js", function(){
     //    console.log('running script again');
     //});
 }

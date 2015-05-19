@@ -67,19 +67,19 @@
 	}
 
 	function mouseDownHandler( event ) {
-		// Make sure the mouse pointer is inside of the book
-		if (Math.abs(mouse.x) < PAGE_WIDTH) {
-			if (mouse.x < 0 && page - 1 >= 0) {
-				// We are on the left side, drag the previous page
-				flips[page - 1].dragging = true;
-			}
-			else if (mouse.x > 0 && page + 1 < flips.length) {
-				// We are on the right side, drag the current page
-				flips[page].dragging = true;
-			}
-		}
 
-		// Prevents the text selection
+        // Make sure the mouse pointer is inside of the book
+        if (Math.abs(mouse.x) < PAGE_WIDTH) {
+            if (mouse.x < 0 && page - 1 >= 0) {
+                // We are on the left side, drag the previous page
+                flips[page - 1].dragging = true;
+            }
+            else if (mouse.x > 0 && page + 1 < flips.length) {
+                // We are on the right side, drag the current page
+                flips[page].dragging = true;
+            }
+        }
+
 		event.preventDefault();
 	}
 
@@ -132,6 +132,7 @@
 		}
 	}
 
+    // Credit goes to http://www.20thingsilearned.com/en-US for their interactive example of a interactive book.
 	function drawFlip( flip ) {
 		// Calculate the strength of the flip. Now the paper is folded the most when halfway across the page.
 		var strength = 1 - Math.abs( flip.progress );
@@ -206,7 +207,7 @@
 		context.strokeStyle = 'rgba(0,0,0,0.06)';
 		context.lineWidth = 0.5;
 
-		// Draw the folded piece of paper
+		// Draw fold
 		context.beginPath();
 		context.moveTo(foldX, 0);
 		context.lineTo(foldX, PAGE_HEIGHT);
