@@ -6,9 +6,7 @@ $(document).ready(function() {
     // init empty hashmap to store count for search term.
     searchHistory = {};
 
-    currentPhotoBookId = null;
-
-    createNewPhotoBook();
+    currentPhotoBookId = createNewPhotoBook();
 
     // populate list with books in storage
     updateBookList();
@@ -45,7 +43,7 @@ $(document).ready(function() {
     // Override Save button click
     $('#btn-save-book').click(function(e) {
         console.log('Saving Book');
-        savePhotoBook();
+        savePhotoBook(currentPhotoBookId);
     });
 
     // Override Delete button click
@@ -217,12 +215,7 @@ function loadPhotos(terms){
 function addPhotoToBook(photoElement){
     //var book = $('#photo-book-container').get(0);
     var book = $('#photo-book').get(0);
-
-    // get current page number
     var pageNo = getCurrentPageNumber();
-
-    // TODO: Check if photos on page === 4, then go to next page.
-    // Add 1 to page count because element has not been added yet.
     var pictureCount = getPictureCountOnPage(pageNo);
     console.log("pictures on page " + pageNo + " : " + pictureCount);
 
@@ -230,6 +223,7 @@ function addPhotoToBook(photoElement){
         // TODO Anmiation and flip to next page (or just don't add anything.
         console.log('No more room on page!');
     } else {
+        // Add 1 to page count because element has not been added yet.
         $(photoElement).addClass("book-section-" + (pictureCount + 1));
     }
 
@@ -267,7 +261,7 @@ function addPhotoToContainer(photoElement){
     nextPhotoId = nextPhotoId + 1;
 }
 
-function savePhotoBook(){
+function savePhotoBook(key){
     //localStorage.setItem(key, $('#photo-book-container').html());
     localStorage.setItem(key, $('#pages').html());
 
@@ -284,7 +278,7 @@ function clearCurrentPhotoBook(){
     $('#pages').children().remove();
     //$('#pages').find('figure').remove(); // This will remove all sections, script might not work.
 
-    // TODO: instead use find and remove all figures, but then I need to redo the load approach.
+    setCurrentPageNumber(0);
 }
 
 function deletePhotoBook(id){
@@ -320,7 +314,7 @@ function updateBookList(){
 
     // Add all saved books.
     for (var i = 0; i < localStorage.length; i++){
-        key = localStorage.key(i);
+        var key = localStorage.key(i);
         $('#dropdown-book-list').append('<li><a href="#">' + key + '</a></li>');
     }
 
@@ -371,6 +365,10 @@ function getCurrentPageNumber(){
     return $('#pages').attr('page');
 }
 
+function setCurrentPageNumber(value){
+    $('#pages').attr('page', value);
+}
+
 // Add an empty page
 // Cannot get function to work, need to reapply script after removing section elements. so for now just doing the simple approach.
 function addPagesToBook(count){
@@ -383,7 +381,7 @@ function addPagesToBook(count){
 
 function resetBookScript(){
     // We also need to reset all the page animations and start start from page 0
-    $('#pages').children('section').css("width", "800");
+    $('#pages').children('section').css("width", "860");
 
     page = 0;
 
