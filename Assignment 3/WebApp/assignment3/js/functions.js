@@ -359,7 +359,7 @@ function createNewPhotoBook(){
      // localStorage.setItem(key, $('#pages').html()); // Don't save the book unless told to do so!
 
     // Add pages to the book and updates the renderer script
-    addPagesToBook(5);
+    addPagesToBook(20);
 
     resetBookScript(true);
 
@@ -424,6 +424,7 @@ function resetBookScript(shouldStartOver){
         } );
     }
 
+    // This is not used anymore since i now use globally referenced variables.
     //// Clear the previous running script
     //clearInterval($('photo-book').attr('interval-id'));
     //
