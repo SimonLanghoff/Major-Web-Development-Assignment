@@ -7,27 +7,27 @@
     var PAGE_WIDTH = 860;
     var PAGE_HEIGHT = 720;
 
-
-
     // Vertical spacing between the top edge of the book and the papers
 	var PAGE_Y = ( BOOK_HEIGHT - PAGE_HEIGHT ) / 2;
 
 	// We need to add padding to our canvas such that the flip animation is not cropped.
 	var CANVAS_PADDING = 40;
 
-	var page = 0;
+	page = 0;
 
 	var canvas = document.getElementById( "photo-book-canvas" );
 	var context = canvas.getContext( "2d" );
 
 	var mouse = { x: 0, y: 0 };
 
-	var flips = [];
+
+    // I'm using global variables here, so we can update these values from other scripts.
+	flips = [];
 
 	var book = document.getElementById( "photo-book" );
 
 	// List of all the page elements in the DOM
-	var pages = book.getElementsByTagName( "section" );
+	pages = book.getElementsByTagName( "section" );
 
 	// Organize the depth of our pages and create the flip definitions
 	for( var i = 0, len = pages.length; i < len; i++ ) {

@@ -351,8 +351,6 @@ function createNewPhotoBook(){
     //localStorage.setItem(key, $('#photo-book-container').html());
      // localStorage.setItem(key, $('#pages').html()); // Don't save the book unless told to do so!
 
-    updateBookList();
-
     addPagesToBook(5);
 
     resetBookScript();
@@ -387,12 +385,38 @@ function resetBookScript(){
     // We also need to reset all the page animations and start start from page 0
     $('#pages').children('section').css("width", "800");
 
-    // Clear the previous running script
-    clearInterval($('photo-book').attr('interval-id'));
+    page = 0;
 
-    // Add the rendering process to the newly added pages.
-    // This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
-    $.getScript("js/pageflip.js", function(){
-        console.log('running script again');
-    });
+    flips = [];
+
+    var book = $('#photo-book');
+
+    // List of all the page elements in the DOM
+    pages = $('#pages').children();
+
+
+    // Organize the depth of our pages and create the flip definitions
+    for( var i = 0, len = pages.length; i < len; i++ ) {
+        pages[i].style.zIndex = len - i;
+
+        flips.push( {
+            // Current progress of the flip (left -1 to right +1)
+            progress: 1,
+            // The target value towards which progress is always moving
+            target: 1,
+            // The page DOM element related to this flip
+            page: pages[i],
+            // True while the page is being dragged
+            dragging: false
+        } );
+    }
+
+    //// Clear the previous running script
+    //clearInterval($('photo-book').attr('interval-id'));
+    //
+    //// Add the rendering process to the newly added pages.
+    //// This might be a resource hog, but right now it's the easiest way for me to dynamically add pages.
+    //$.getScript("js/pageflip.js", function(){
+    //    console.log('running script again');
+    //});
 }
