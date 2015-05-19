@@ -36,7 +36,7 @@ $(document).ready(function() {
     // Override create button click
     $('#btn-create-book').click(function(e) {
         console.log('Creating Book');
-        createNewPhotoBook();
+        currentPhotoBookId = createNewPhotoBook();
     });
 
 
@@ -222,29 +222,28 @@ function addPhotoToBook(photoElement){
     var pictureCount = getPictureCountOnPage(pageNo);
     console.log("pictures on page " + pageNo + " : " + pictureCount);
 
-    if(pictureCount >= 4){
-        // TODO Anmiation and flip to next page (or just don't add anything.
-        console.log('No more room on page!');
-    } else {
+    if(pictureCount < 4){
+        $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
+        $(photoElement).addClass("in-book");
+        $(photoElement).children().removeAttr('id');
+        $(photoElement).css('top', "").css('left', "");
+
+        // TODO: do this in the right section depending on the page we are on.
+        $(book).children('section').children('div').append(photoElement);
+        //$(book).children('section').children('div').append(photoElement);
+
+        $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
+
+        //// Add the element to the photo-book
+        $('#pages').children().eq(pageNo).children().append(photoElement);
+
+        nextBookPhotoId = nextBookPhotoId + 1;
+
         // Add 1 to page count because element has not been added yet.
         $(photoElement).addClass("book-section-" + (pictureCount + 1));
+    } else {
+        // TODO Anmiation and flip to next page (or just don't add anything.
     }
-
-    $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
-    $(photoElement).addClass("in-book");
-    $(photoElement).children().removeAttr('id');
-    $(photoElement).css('top', "").css('left', "");
-
-    // TODO: do this in the right section depending on the page we are on.
-    $(book).children('section').children('div').append(photoElement);
-    //$(book).children('section').children('div').append(photoElement);
-
-    $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
-
-    //// Add the element to the photo-book
-    $('#pages').children().eq(pageNo).children().append(photoElement);
-
-    nextBookPhotoId = nextBookPhotoId + 1;
 }
 
 function addPhotoToContainer(photoElement){
@@ -306,7 +305,7 @@ function deletePhotoBook(id){
         clearCurrentPhotoBook();
     }
 
-    createNewPhotoBook();
+    currentPhotoBookId = createNewPhotoBook();
 }
 
 function loadPhotoBook(id){
@@ -346,11 +345,7 @@ function updateBookList(){
 
 function createNewPhotoBook(){
     // Remove the one that is already on the page.
-    // TODO: need to rerun book script then or add correct attributes
     clearCurrentPhotoBook();
-    //if(currentPhotoBookId != null){
-    //  clearCurrentPhotoBook();
-    //}
 
     // Create a unique id for the new book
     var key = 'photo-book-' + getRandomWholeNumber(0, 10000);
