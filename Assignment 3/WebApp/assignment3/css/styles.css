@@ -166,8 +166,9 @@ div#photo-container {
     height: 670px;
     left: 50%;
     overflow: hidden;
+    padding-left: 50px;
     position: absolute;
-    top: 2%;
+    top: 3%;
     width: 860px;
 }
 
@@ -206,6 +207,26 @@ div#photo-container {
     -moz-transform: rotate(12deg);
     -o-transform: rotate(12deg);
     -ms-transform: rotate(12deg);
+}
+
+figure#book-photo-1 {
+    top: 15px;
+    left: 50px;
+}
+
+figure#book-photo-2 {
+    top: 15px;
+    right: 75px;
+}
+
+figure#book-photo-3 {
+    bottom: 15px;
+    left: 50px;
+}
+
+figure#book-photo-4 {
+    bottom: 15px;
+    right: 75px;
 }
 
 

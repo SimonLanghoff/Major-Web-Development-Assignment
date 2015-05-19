@@ -5,7 +5,7 @@ $(document).ready(function() {
     nextBookPhotoId = 1;
     nextPhotoId = 0;
 
-    pageNumber = 1;
+    pageNumber = 0;
 
     // init empty hashmap to store count for search term.
     searchHistory = {};
@@ -238,6 +238,15 @@ function addPhotoToBook(photoElement){
         nextPosY = nextPosY + 100; //TODO: Update with image height
     }
 
+    // TODO: Check if photos on page === 4, then go to next page.
+    // Add 1 to page count because element has not been added yet.
+    var pictureCount = getPictureCountOnPage(pageNumber);
+    if(pictureCount + 1 >= 4){
+        // Anmiation and flip to next page.
+    } else {
+        $(photoElement).addClass("book-photo-" + (pictureCount + 1));
+    }
+
     $(photoElement).attr("id", "book-photo-" + nextBookPhotoId);
     $(photoElement).addClass("in-book");
 
@@ -247,7 +256,8 @@ function addPhotoToBook(photoElement){
     console.log($(book).children('section').children('div').append(photoElement));
     //$(book).children('section').children('div').append(photoElement);
 
-    $(photoElement).remove(); // remove the photo from the origin container.
+    $(photoElement).remove(); // remove the photo from the origin container. // TODO: Consider moving before adding class earlier
+
 
     // Then add the element to the photo-book
     pageNumber = $('#pages').attr('page');
@@ -280,7 +290,6 @@ function addPhotoToContainer(photoElement){
     $(container).append(photoElement);
 
     nextPhotoId = nextPhotoId + 1;
-
 }
 
 function savePhotoBook(){
@@ -387,7 +396,7 @@ function getRandomWholeNumber(min, max) {
 }
 
 function getPictureCountOnPage(pageNumber){
-    return count = $('#pages').children().eq(pageNumber).children().length;
+    return $('#pages').children().eq(pageNumber).children('div').children().length;
 }
 
 // Add an empty page
