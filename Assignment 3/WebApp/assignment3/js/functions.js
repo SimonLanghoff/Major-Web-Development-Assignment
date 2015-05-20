@@ -51,6 +51,11 @@ $(document).ready(function() {
         deletePhotoBook(currentPhotoBookId);
     });
 
+
+    $('#btn-delete-photos').click(function(e) {
+        $('#photo-container').children().remove();
+    });
+
     // Add handlers so images can be removed from the book without getting images from flickr.
     addDragDropHandlers();
 });
