@@ -83,8 +83,7 @@ function handleDragOver(e) {
 function handleDragEnter(e) {
     // e is the target
     if($(this).attr('id') != 'photo-container') {
-        $(this).addClass('over')
-        $(this).addClass('hover')
+        $(this).addClass('hover');
     }
 }
 
@@ -92,8 +91,7 @@ function handleDragLeave(e) {
     // e is the target
     // Only remove the class if we are outside the book or photo containers.
     if($(this).attr('id') === 'photo-container') {
-        $('.over').removeClass('over')
-        $('hover').removeClass('hover')
+        $('hover').removeClass('hover');
     }
 }
 
@@ -103,7 +101,6 @@ function handleDrop(e) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
 
-    $('.over').removeClass('over');
     $('.hover').removeClass('hover');
 
     if(draggedElement != this) {
@@ -119,7 +116,6 @@ function handleDrop(e) {
 
 function handleDragEnd(e) {
     // e is the source element of the drag.
-    $('.over').removeClass('over');
     $('.hover').removeClass('hover');
 }
 
@@ -173,7 +169,7 @@ function loadPhotos(terms){
 
             // Get the parent figure element and append the figcaption
             var parentFigure = $('#photo-' + nextPhotoId).parent();
-            $('<figcaption>' + photo.title.substring(0, 75) + '</figcaption>').appendTo(parentFigure);
+            $('<figcaption>' + photo.title.substring(0, 65) + '</figcaption>').appendTo(parentFigure);
 
             nextPhotoId = nextPhotoId + 1;
         });
@@ -203,7 +199,7 @@ function addPhotoToBook(photoElement){
         // Add 1 to page count because element has not been added yet.
         $(photoElement).addClass("book-section-" + (pictureCount + 1));
     } else {
-        // TODO Anmiation and flip to next page (or just don't add anything.
+        // TODO Future work: Animation and flip to next page (or just don't add anything).
     }
 }
 
@@ -223,6 +219,7 @@ function addPhotoToContainer(photoElement){
     nextPhotoId = nextPhotoId + 1;
 }
 
+// used to determine a random position within the photo-container and add that style to the supplied photo element.
 function setRandomPosition(element){
     var maxX = $('#photo-container').innerWidth() - 300;
     var positionX = getRandomWholeNumber(0, maxX);
@@ -240,7 +237,7 @@ function savePhotoBook(key){
     updateBookList();
 }
 
-// Simply clears the photo container of any items.
+// Simply clears the photo container of any items and go back to first page.
 function clearCurrentPhotoBook(){
     currentPhotoBookId = null;
     $('#pages').children().remove();

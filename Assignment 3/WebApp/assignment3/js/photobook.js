@@ -20,7 +20,6 @@
 
 	var mouse = { x: 0, y: 0 };
 
-
     // I'm using global variables here, so we can update these values from other scripts.
 	flips = [];
 
@@ -102,7 +101,7 @@
 
             // Create attribute with current page number.
             $('#pages').attr('page', page);
-            // TODO:  If we are at the end of the book, add one more page.
+            // TODO Future work:  If we are at the end of the book, dynamically add one more page.
             //if(page === pages.length - 1){
             //    console.log('add the end of the book!');
             //    addPagesToBook(1);
@@ -133,6 +132,7 @@
 	}
 
     // Credit goes to http://www.20thingsilearned.com/en-US for their interactive example of a interactive book.
+    // This method is responsible for creating the strokes and shadow effects that mimmics that of a page turning over.
 	function drawFlip( flip ) {
 		// Calculate the strength of the flip. Now the paper is folded the most when halfway across the page.
 		var strength = 1 - Math.abs( flip.progress );
